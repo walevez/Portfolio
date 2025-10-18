@@ -92,14 +92,26 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 .video-embed{ position:relative; width:100%; max-width:900px; margin:12px auto; border-radius:12px; overflow:hidden; background:#000; aspect-ratio:16/9 }
 .video-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
 
+/* Comparativa en dos columnas dentro de la tarjeta */
+.compare-split{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:14px;
+  align-items:start;
+}
+.compare-split .pane{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border:1px solid var(--line); border-radius:12px; padding:12px}
+.compare-split .pane h4{margin:6px 0 8px}
+.compare-split .pane ul{margin:8px 0 0 16px}
+.img-slot{width:100%; aspect-ratio:16/9; border:1px dashed var(--line); border-radius:10px; background:rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:12px}
+.img-slot img{width:100%; height:100%; object-fit:cover; display:block}
+
+/* Card que ocupa toda la fila en grilla de tarjetas */
+.cards .full-row{ grid-column: 1 / -1; }
+
 /* Reordenar tarjetas de SSD */
 /* Ocultar duplicado inferior de comparativa y la tarjeta superior de "ruta vs autopista" */
-#card-comparativa-general-bottom { display:none; }
-#card-ruta-autopista-top { display:none; }
 /* Mostrar la tarjeta inferior de "ruta vs autopista" y colocarla antes de Gráficos */
-#card-ruta-autopista-bottom { display:block; order: 2; }
 /* Colocar la tarjeta de Gráficos después usando :has() para detectar el canvas */
-#almacenamiento-ssd .grid > article:has(#storageCanvas) { order: 3; }
 
 /* Comparativa */
 .equipos-table td:first-child { font-weight:700; width: 22%; white-space: nowrap; }
@@ -171,3 +183,6 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
   .nav-links a{padding:14px 16px; border-top:1px solid var(--line)}
   .nav-links.open{display:flex}
 }
+
+
+

@@ -274,7 +274,7 @@
       <p class="subtitle">¿Qué son y por qué importa?</p>
 
       <div class="grid cards">
-        <article class="card">
+        <article class="card full-row">
           <h3>¿Qué es un SSD?</h3>
           <p>
             Un SSD usa memoria flash NAND para guardar datos de forma persistente y no tiene partes móviles, a diferencia de los HDD.
@@ -285,130 +285,49 @@
             <li>▪️ <strong>NVMe</strong> → Nueva generación en PCIe, diseñada para velocidad.</li>
           </ul>
         </article>
-        <!-- Nueva ubicación: Comparativa General reemplaza a "La ruta vs la autopista" en la grilla superior -->
-        <article class="card">
+        <!-- Comparativa General: dos secciones paralelas con espacio para imágenes -->
+        <article class="card full-row">
           <h3>Comparativa General</h3>
-          <details class="faq" open>
-            <summary>SATA</summary>
-            <div>
-              <p><strong>Ventajas</strong></p>
+          <div class="compare-split">
+            <section class="pane">
+              <h4>SATA</h4>
+              <div class="img-slot">
+                <!-- Coloca aquí una imagen SATA si querés -->
+                <!-- <img src="ruta/a/imagen-sata.jpg" alt="SSD SATA" /> -->
+              </div>
               <ul>
                 <li>Compatibilidad altísima (PCs viejas y nuevas)</li>
                 <li>Más barato por GB</li>
                 <li>Ideal para archivos, backups o datos poco usados</li>
+                <li>Límite práctico ~550–600 MB/s</li>
               </ul>
-              <p><strong>Desventajas</strong></p>
+            </section>
+            <section class="pane">
+              <h4>NVMe</h4>
+              <div class="img-slot">
+                <!-- Coloca aquí una imagen NVMe si querés -->
+                <!-- <img src="ruta/a/imagen-nvme.jpg" alt="SSD NVMe" /> -->
+              </div>
               <ul>
-                <li>Máximo ~600 MB/s (tope del bus)</li>
-                <li>Queda corto para SSD modernos</li>
-                <li>No sirve bien para cargas intensivas o baja latencia</li>
-              </ul>
-            </div>
-          </details>
-          <details class="faq">
-            <summary>NVMe</summary>
-            <div>
-              <p><strong>Ventajas</strong></p>
-              <ul>
-                <li>Usa PCIe (mucho más rápido)</li>
+                <li>Usa PCIe (3.000–7.000+ MB/s según generación)</li>
                 <li>Latencia muy baja</li>
                 <li>Formatos M.2 compactos</li>
-                <li>Ideal para IA, videojuegos, edición, bases de datos, render</li>
+                <li>Más caro por GB y requiere soporte de la placa</li>
               </ul>
-              <p><strong>Desventajas</strong></p>
-              <ul>
-                <li>Más caro por GB</li>
-                <li>No todas las PCs viejas lo soportan</li>
-                <li>Menos práctico para datos masivos a bajo costo</li>
-              </ul>
-            </div>
-          </details>
-        </article>
-        <article class="card" id="card-ruta-autopista-top">
-          <h3>La ruta vs la autopista</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Tecnología</th>
-                  <th>Comparación</th>
-                  <th>Velocidad aproximada</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>SATA</td>
-                  <td>Ruta de 2 carriles</td>
-                  <td>Hasta 550 MB/s</td>
-                </tr>
-                <tr>
-                  <td>NVMe</td>
-                  <td>Autopista de 8 carriles</td>
-                  <td>Entre 3000 y 7000 MB/s</td>
-                </tr>
-              </tbody>
-            </table>
+            </section>
           </div>
-          <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
         </article>
       </div>
 
       <div class="grid">
-        <article class="card" id="card-comparativa-general-bottom">
-          <h3>Comparativa General</h3>
-          <details class="faq" open>
-            <summary>SATA</summary>
-            <div>
-              <p><strong>Ventajas</strong></p>
-              <ul>
-                <li>Compatibilidad altísima (PCs viejas y nuevas)</li>
-                <li>Más barato por GB</li>
-                <li>Ideal para archivos, backups o datos poco usados</li>
-              </ul>
-              <p><strong>Desventajas</strong></p>
-              <ul>
-                <li>Máximo ~600 MB/s (tope del bus)</li>
-                <li>Queda corto para SSD modernos</li>
-                <li>No sirve bien para cargas intensivas o baja latencia</li>
-              </ul>
-            </div>
-          </details>
-          <details class="faq">
-            <summary>NVMe</summary>
-            <div>
-              <p><strong>Ventajas</strong></p>
-              <ul>
-                <li>Usa PCIe (mucho más rápido)</li>
-                <li>Latencia muy baja</li>
-                <li>Formatos M.2 compactos</li>
-                <li>Ideal para IA, videojuegos, edición, bases de datos, render</li>
-              </ul>
-              <p><strong>Desventajas</strong></p>
-              <ul>
-                <li>Más caro por GB</li>
-                <li>No todas las PCs viejas lo soportan</li>
-                <li>Menos práctico para datos masivos a bajo costo</li>
-              </ul>
-            </div>
-          </details>
-        </article>
-        <article class="card">
-          <h3>Gráficos</h3>
-          <p class="kv">Velocidad secuencial (MB/s)</p>
-          <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
-          <div class="legend" id="storageLegend"></div>
-          <p class="kv" style="margin-top:14px">Latencia (μs, menor es mejor)</p>
-          <canvas id="latencyCanvas" width="900" height="320" class="canvas"></canvas>
-          <div class="legend" id="latencyLegend"></div>
-        </article>
         <article class="card" id="card-ruta-autopista-bottom">
           <h3>La ruta vs la autopista</h3>
           <div class="table-wrapper">
             <table>
               <thead>
                 <tr>
-                  <th>Tecnolog��a</th>
-                  <th>Comparaci��n</th>
+                  <th>Tecnolog??????a</th>
+                  <th>Comparaci??????n</th>
                   <th>Velocidad aproximada</th>
                 </tr>
               </thead>
@@ -427,6 +346,15 @@
             </table>
           </div>
           <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
+        </article>
+        <article class="card">
+          <h3>Groficos</h3>
+          <p class="kv">Velocidad secuencial (MB/s)</p>
+          <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
+          <div class="legend" id="storageLegend"></div>
+          <p class="kv" style="margin-top:14px">Latencia (?s, menor es mejor)</p>
+          <canvas id="latencyCanvas" width="900" height="320" class="canvas"></canvas>
+          <div class="legend" id="latencyLegend"></div>
         </article>
       </div>
 
@@ -435,14 +363,14 @@
         <div class="video-embed">
           <iframe
             src="https://www.youtube.com/embed/hE4JV2FYw0U"
-            title="Benchmarker6464 - Video"
+            title="Benchmarker64 - Video"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="lazy">
           </iframe>
         </div>
-        <p class="kv">Fuente: <a href="https://www.youtube.com/@benchmarker6464" target="_blank" rel="noopener noreferrer">@benchmarker6464</a></p>
+        <p class="kv">Fuente: <a href="https://www.youtube.com/@benchmarker64" target="_blank" rel="noopener noreferrer">@benchmarker6464</a></p>
       </details>
 
       <details class="faq">
@@ -810,3 +738,6 @@
   <script language="JavaScript" type="text/javascript">TrustLogo("https://micuenta.donweb.com/img/sectigo_positive_sm.png", "CL1", "none");</script><a href="https://donweb.com/es-ar/certificados-ssl" id="comodoTL" title="Certificados SSL Argentina">Certificados SSL Argentina</a>
 </body>
 </html>
+
+
+
