@@ -11,6 +11,14 @@
 <body>
   <canvas id="bgLines" aria-hidden="true"></canvas>
 
+  <!-- Loading overlay -->
+  <div id="app-loader" class="loader-overlay" role="status" aria-live="polite" aria-busy="true">
+    <div class="loader-box">
+      <span class="spinner" aria-hidden="true"></span>
+      <span class="loader-text">Loading...</span>
+    </div>
+  </div>
+
   <!-- Header / Navbar (fixed de verdad) -->
   <header class="site-header" role="banner">
     <div class="container nav">
@@ -218,12 +226,31 @@
       <div class="grid cards">
         <article class="card">
           <h4>NVIDIA GeForce RTX 5090 (arquitectura Blackwell)</h4>
-          <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px">
-            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: Producto</div>
-            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: AMP</div>
-            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: SM Blackwell</div>
-            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: Arquitectura</div>
+          <div class="carousel" id="rtx-carousel" aria-label="Carrusel RTX 5090">
+            <button class="carousel-btn prev" aria-label="Anterior" data-dir="-1">&#10094;</button>
+            <div class="carousel-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-1.webp" alt="Blackwell Architecture 1"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-2.webp" alt="Blackwell Architecture 2"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-3.webp" alt="Blackwell Architecture 3"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-4.webp" alt="Blackwell Architecture 4"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-5.webp" alt="Blackwell Architecture 5"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-6.webp" alt="Blackwell Architecture 6"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-7.webp" alt="Blackwell Architecture 7"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-8.webp" alt="Blackwell Architecture 8"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-9.webp" alt="Blackwell Architecture 9"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-10.webp" alt="Blackwell Architecture 10"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-11.webp" alt="Blackwell Architecture 11"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-12.webp" alt="Blackwell Architecture 12"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-13.webp" alt="Blackwell Architecture 13"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-14.webp" alt="Blackwell Architecture 14"></div>
+                <div class="carousel-slide"><img src="images/carrusel/Blackwell-Architecture-15.webp" alt="Blackwell Architecture 15"></div>
+              </div>
+            </div>
+            <button class="carousel-btn next" aria-label="Siguiente" data-dir="1">&#10095;</button>
+            <div class="carousel-dots" aria-label="Paginación"></div>
           </div>
+          <p class="caption"><a class="source-link" href="https://www.madboxpc.com/detalles-de-la-arquitectura-nvidia-blackwell-geforce-rtx-50-series/" target="_blank" rel="noopener noreferrer">fuente</a></p>
           <ul>
             <li><strong>Arquitectura/GPU</strong>: Blackwell / GB202; 170 SM.</li>
             <li><strong>Cómputo</strong>: 21.760 CUDA, 680 Tensor (5ª gen), 170 RT (4ª gen).</li>
@@ -324,8 +351,8 @@
             <table>
               <thead>
                 <tr>
-                  <th>Tecnolog??????a</th>
-                  <th>Comparaci??????n</th>
+                  <th>Tecnología</th>
+                  <th>Comparación</th>
                   <th>Velocidad aproximada</th>
                 </tr>
               </thead>
@@ -346,11 +373,11 @@
           <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
         </article>
         <article class="card" id="card-graficos">
-          <h3>Groficos</h3>
+          <h3>Gráficos</h3>
           <p class="kv">Velocidad secuencial (MB/s)</p>
           <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
           <div class="legend" id="storageLegend"></div>
-          <p class="kv" style="margin-top:14px">Latencia (?s, menor es mejor)</p>
+          <p class="kv" style="margin-top:14px">Latencia (µs, menor es mejor)</p>
           <canvas id="latencyCanvas" width="900" height="320" class="canvas"></canvas>
           <div class="legend" id="latencyLegend"></div>
         </article>
@@ -368,7 +395,7 @@
             loading="lazy">
           </iframe>
         </div>
-        <p class="kv">Fuente: <a href="https://www.youtube.com/@benchmarker64" target="_blank" rel="noopener noreferrer">@benchmarker6464</a></p>
+        <p class="kv">Fuente: <a class="source-link" href="https://www.youtube.com/@benchmarker64" target="_blank" rel="noopener noreferrer">@benchmarker64</a></p>
       </details>
 
       <details class="faq">
@@ -491,11 +518,11 @@
         <summary>Bibliografía</summary>
         <div>
           <ul>
-            <li><a href="https://semiconductor.samsung.com/news-events/tech-blog/sata-vs-nvme-ssds-which-interface-is-right-for-your-business/" target="_blank" rel="noopener">Samsung: SATA vs NVMe</a></li>
-            <li><a href="https://www.kingston.com/es/blog/pc-performance/nvme-vs-sata" target="_blank" rel="noopener">Kingston: NVMe vs SATA</a></li>
-            <li><a href="https://www.adata.com/ar/quikTips/difference-ssd-sata-vs-nvme/" target="_blank" rel="noopener">ADATA: diferencias</a></li>
-            <li><a href="https://www.kingston.com/latam/blog/pc-performance/what-is-pcie-gen5-ssd" target="_blank" rel="noopener">¿Qué es PCIe Gen5?</a></li>
-            <li><a href="https://devblogs.microsoft.com/directx/directstorage-is-coming-to-pc/" target="_blank" rel="noopener">DirectStorage en PC</a></li>
+            <li><a class="source-link" href="https://semiconductor.samsung.com/news-events/tech-blog/sata-vs-nvme-ssds-which-interface-is-right-for-your-business/" target="_blank" rel="noopener">Samsung: SATA vs NVMe</a></li>
+            <li><a class="source-link" href="https://www.kingston.com/es/blog/pc-performance/nvme-vs-sata" target="_blank" rel="noopener">Kingston: NVMe vs SATA</a></li>
+            <li><a class="source-link" href="https://www.adata.com/ar/quikTips/difference-ssd-sata-vs-nvme/" target="_blank" rel="noopener">ADATA: diferencias</a></li>
+            <li><a class="source-link" href="https://www.kingston.com/latam/blog/pc-performance/what-is-pcie-gen5-ssd" target="_blank" rel="noopener">¿Qué es PCIe Gen5?</a></li>
+            <li><a class="source-link" href="https://devblogs.microsoft.com/directx/directstorage-is-coming-to-pc/" target="_blank" rel="noopener">DirectStorage en PC</a></li>
           </ul>
         </div>
       </details>
@@ -637,14 +664,14 @@
         <summary>📚 Bibliografía y fuentes</summary>
         <div>
           <ul>
-            <li><a href="https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/" target="_blank" rel="noopener">Tim Dettmers — Which GPU for deep learning?</a></li>
-            <li><a href="https://www.pugetsystems.com/solutions/machine-learning-workstations/" target="_blank" rel="noopener">Puget Systems — ML Workstation Recommendations</a></li>
-            <li><a href="https://lambdalabs.com/gpu-benchmarks" target="_blank" rel="noopener">Lambda Labs — GPU Benchmarks</a></li>
-            <li><a href="https://huggingface.co/docs/transformers/perf_train_gpu_one" target="_blank" rel="noopener">Hugging Face — Transformers perf train on one GPU</a></li>
-            <li><a href="https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html" target="_blank" rel="noopener">PyTorch — GPU Performance Tuning Guide</a></li>
-            <li><a href="https://www.techspot.com/gpu-hierarchy/" target="_blank" rel="noopener">TechSpot — GPU Hierarchy</a></li>
-            <li><a href="https://www.userbenchmark.com/" target="_blank" rel="noopener">UserBenchmark — Real World Performance</a></li>
-            <li><a href="https://reddit.com/r/MachineLearning" target="_blank" rel="noopener">Reddit — r/MachineLearning</a></li>
+            <li><a class="source-link" href="https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/" target="_blank" rel="noopener">Tim Dettmers — Which GPU for deep learning?</a></li>
+            <li><a class="source-link" href="https://www.pugetsystems.com/solutions/machine-learning-workstations/" target="_blank" rel="noopener">Puget Systems — ML Workstation Recommendations</a></li>
+            <li><a class="source-link" href="https://lambdalabs.com/gpu-benchmarks" target="_blank" rel="noopener">Lambda Labs — GPU Benchmarks</a></li>
+            <li><a class="source-link" href="https://huggingface.co/docs/transformers/perf_train_gpu_one" target="_blank" rel="noopener">Hugging Face — Transformers perf train on one GPU</a></li>
+            <li><a class="source-link" href="https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html" target="_blank" rel="noopener">PyTorch — GPU Performance Tuning Guide</a></li>
+            <li><a class="source-link" href="https://www.techspot.com/gpu-hierarchy/" target="_blank" rel="noopener">TechSpot — GPU Hierarchy</a></li>
+            <li><a class="source-link" href="https://www.userbenchmark.com/" target="_blank" rel="noopener">UserBenchmark — Real World Performance</a></li>
+            <li><a class="source-link" href="https://reddit.com/r/MachineLearning" target="_blank" rel="noopener">Reddit — r/MachineLearning</a></li>
           </ul>
         </div>
       </details>
@@ -694,7 +721,7 @@
         <summary>Bibliografía</summary>
         <div>
           <ul>
-            <li><a href="https://www.fundacionbankinter.org/noticias/del-silicio-al-quantum-la-nueva-era-de-los-chips/" target="_blank" rel="noopener">Del silicio al quantum: la nueva era de los chips</a></li>
+            <li><a class="source-link" href="https://www.fundacionbankinter.org/noticias/del-silicio-al-quantum-la-nueva-era-de-los-chips/" target="_blank" rel="noopener">Del silicio al quantum: la nueva era de los chips</a></li>
           </ul>
         </div>
       </details>

@@ -1,7 +1,7 @@
-/* ===== Utilidad DOM ===== */
+﻿/* ===== Utilidad DOM ===== */
 const $ = (sel, ctx=document) => ctx.querySelector(sel);
 
-/* ===== Forzar header fijo y compensación dinámica ===== */
+/* ===== Forzar header fijo y compensaciÃ³n dinÃ¡mica ===== */
 function fixHeaderHeight(){
   const header = $(".site-header");
   const spacer = $(".header-spacer");
@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", fixHeaderHeight);
 /* ===== Datos de ejemplo (cards) ===== */
 const DATA = {
   componentes: [
-    { id:"cpu", titulo:"CPU", rol:"Planificación, ETL, compresión, consultas paralelas.", tips:"Muchos núcleos e IPC alto.", ejemplos:["Ryzen 9 7950X","Xeon W"], foco:["data","db","inferencia"], precioRef:700 },
+    { id:"cpu", titulo:"CPU", rol:"PlanificaciÃ³n, ETL, compresiÃ³n, consultas paralelas.", tips:"Muchos nÃºcleos e IPC alto.", ejemplos:["Ryzen 9 7950X","Xeon W"], foco:["data","db","inferencia"], precioRef:700 },
     { id:"gpu", titulo:"GPU", rol:"Entrenamiento e inferencia; VRAM manda.", tips:"Para entrenar: VRAM > FLOPS.", ejemplos:["RTX 4070 Ti 16GB","RTX 4090 24GB"], foco:["entrenamiento","inferencia"], precioRef:1600 },
-    { id:"ram", titulo:"RAM", rol:"Datasets en memoria, VMs/containers.", tips:"32–64 GB para empezar.", ejemplos:["64 GB DDR5","128 GB DDR5"], foco:["data","db","entrenamiento"], precioRef:200 },
-    { id:"storage", titulo:"Almacenamiento", rol:"NVMe para datasets, SATA para archivo frío.", tips:"Mirar IOPS y TBW.", ejemplos:["2TB NVMe Gen4","4TB SATA"], foco:["data","db"], precioRef:250 }
+    { id:"ram", titulo:"RAM", rol:"Datasets en memoria, VMs/containers.", tips:"32â€“64 GB para empezar.", ejemplos:["64 GB DDR5","128 GB DDR5"], foco:["data","db","entrenamiento"], precioRef:200 },
+    { id:"storage", titulo:"Almacenamiento", rol:"NVMe para datasets, SATA para archivo frÃ­o.", tips:"Mirar IOPS y TBW.", ejemplos:["2TB NVMe Gen4","4TB SATA"], foco:["data","db"], precioRef:250 }
   ]
 };
 
@@ -39,36 +39,36 @@ function renderComponentes(){
       <ul class="kv">
         <li><strong>Tips:</strong> ${c.tips}</li>
         <li><strong>Ejemplos:</strong> ${c.ejemplos.join(", ")}</li>
-        <li><strong>Enfoque:</strong> ${c.foco.join(" · ")}</li>
+        <li><strong>Enfoque:</strong> ${c.foco.join(" Â· ")}</li>
         <li><strong>Precio ref:</strong> $${c.precioRef}</li>
       </ul>
     </article>
   `).join("");
 }
 
-/* ===== Corrección de texto (mojibake) en DOM ===== */
+/* ===== CorrecciÃ³n de texto (mojibake) en DOM ===== */
 function sanitizeTextIn(container){
   if(!container) return;
   const replacements = [
-    [/quǸ/g, 'qué'],
-    [/qu\?/g, 'qué'],
-    [/por quǸ/g, 'por qué'],
-    [/cuǭnto/g, 'cuánto'],
-    [/Coraz��n/g, 'Corazón'],
-    [/Mǭquina/g, 'Máquina'],
-    [/l��gica/g, 'lógica'],
-    [/mini-fǭbrica/g, 'mini-fábrica'],
-    [/Nǧcleos/g, 'Núcleos'],
-    [/3000[^0-9]*7000/g, '3000–7000'],
-    [/opci��n econ��mica/g, 'opción económica'],
-    [/4�-/g, '4×'],
-    [/��GPU o CPU para IA\?/g, '¿GPU o CPU para IA?'],
-    [/��RAM/g, '¿RAM'],
-    [/cuǭnta/g, 'cuánta'],
-    [/32[^0-9]*64/g, '32–64'],
-    [/fr��o/g, 'frío'],
-    [/Hecho por el equipo ��/g, 'Hecho por el equipo ©'],
-    [/ �� /g, ' · '],
+    [/quÇ¸/g, 'quÃ©'],
+    [/qu\?/g, 'quÃ©'],
+    [/por quÇ¸/g, 'por quÃ©'],
+    [/cuÇ­nto/g, 'cuÃ¡nto'],
+    [/Corazï¿½ï¿½n/g, 'CorazÃ³n'],
+    [/MÇ­quina/g, 'MÃ¡quina'],
+    [/lï¿½ï¿½gica/g, 'lÃ³gica'],
+    [/mini-fÇ­brica/g, 'mini-fÃ¡brica'],
+    [/NÇ§cleos/g, 'NÃºcleos'],
+    [/3000[^0-9]*7000/g, '3000â€“7000'],
+    [/opciï¿½ï¿½n econï¿½ï¿½mica/g, 'opciÃ³n econÃ³mica'],
+    [/4ï¿½-/g, '4Ã—'],
+    [/ï¿½ï¿½GPU o CPU para IA\?/g, 'Â¿GPU o CPU para IA?'],
+    [/ï¿½ï¿½RAM/g, 'Â¿RAM'],
+    [/cuÇ­nta/g, 'cuÃ¡nta'],
+    [/32[^0-9]*64/g, '32â€“64'],
+    [/frï¿½ï¿½o/g, 'frÃ­o'],
+    [/Hecho por el equipo ï¿½ï¿½/g, 'Hecho por el equipo Â©'],
+    [/ ï¿½ï¿½ /g, ' Â· '],
   ];
   const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
   const nodes = [];
@@ -83,7 +83,7 @@ function sanitizeTextIn(container){
   }
 }
 
-/* ===== Gráfico simple de almacenamiento ===== */
+/* ===== GrÃ¡fico simple de almacenamiento ===== */
 function drawStorageChart(){
   const canvas = document.getElementById("storageCanvas");
   if(!canvas) return;
@@ -98,7 +98,7 @@ function drawStorageChart(){
   const values = [120, 550, 3200, 7000, 11000];
   const max = Math.max(...values) * 1.15;
 
-  // Márgenes y ejes
+  // MÃ¡rgenes y ejes
   const plot = { left: 80, right: 20, top: 20, bottom: 40 };
   ctx.strokeStyle = "rgba(255,255,255,0.25)";
   ctx.beginPath();
@@ -107,7 +107,7 @@ function drawStorageChart(){
   ctx.lineTo(w - plot.right, h - plot.bottom);
   ctx.stroke();
 
-  // Barras posicionadas dentro del área de dibujo
+  // Barras posicionadas dentro del Ã¡rea de dibujo
   const step = (w - plot.left - plot.right) / labels.length;
   const barW = step * 0.6;
   for (let i=0; i<labels.length; i++){
@@ -129,7 +129,7 @@ function drawStorageChart(){
     ctx.fillText(values[i] + " MB/s", x + barW/2, (h - plot.bottom - 8) - bh);
   }
 
-  // Eje Y: ticks y líneas guía, con etiquetas a la izquierda del eje
+  // Eje Y: ticks y lÃ­neas guÃ­a, con etiquetas a la izquierda del eje
   ctx.fillStyle = "rgba(255,255,255,0.6)";
   ctx.textAlign = "right";
   const tick = 2000;
@@ -145,7 +145,7 @@ function drawStorageChart(){
   }
 }
 
-/* ===== Gráfico de latencia (μs, menor es mejor) ===== */
+/* ===== GrÃ¡fico de latencia (Î¼s, menor es mejor) ===== */
 function drawLatencyChart(){
   const canvas = document.getElementById("latencyCanvas");
   if(!canvas) return;
@@ -157,11 +157,11 @@ function drawLatencyChart(){
   ctx.fillStyle = bg; ctx.fillRect(0,0,w,h);
 
   const labels = ["HDD", "SSD SATA", "NVMe Gen3", "NVMe Gen4", "NVMe Gen5"];
-  // Valores aproximados en microsegundos (μs)
+  // Valores aproximados en microsegundos (Î¼s)
   const values = [4000, 100, 30, 20, 15];
   const max = Math.max(...values) * 1.15;
 
-  // Márgenes y ejes
+  // MÃ¡rgenes y ejes
   const plot = { left: 80, right: 20, top: 20, bottom: 40 };
   ctx.strokeStyle = "rgba(255,255,255,0.25)";
   ctx.beginPath();
@@ -170,7 +170,7 @@ function drawLatencyChart(){
   ctx.lineTo(w - plot.right, h - plot.bottom);
   ctx.stroke();
 
-  // Barras posicionadas dentro del área de dibujo
+  // Barras posicionadas dentro del Ã¡rea de dibujo
   const step = (w - plot.left - plot.right) / labels.length;
   const barW = step * 0.6;
   for (let i=0; i<labels.length; i++){
@@ -189,10 +189,10 @@ function drawLatencyChart(){
     // Valor encima de barra
     ctx.fillStyle = "rgba(255,255,255,0.75)";
     ctx.font = "11px system-ui";
-    ctx.fillText(values[i] + " μs", x + barW/2, (h - plot.bottom - 8) - bh);
+    ctx.fillText(values[i] + " Î¼s", x + barW/2, (h - plot.bottom - 8) - bh);
   }
 
-  // Eje Y: ticks y líneas guía, etiquetas a la izquierda del eje para no superponer
+  // Eje Y: ticks y lÃ­neas guÃ­a, etiquetas a la izquierda del eje para no superponer
   ctx.fillStyle = "rgba(255,255,255,0.6)";
   ctx.textAlign = "right";
   const ticks = [0, 20, 50, 100, 500, 1000, 2000, 4000];
@@ -205,11 +205,11 @@ function drawLatencyChart(){
 
   const legend = document.getElementById("latencyLegend");
   if (legend){
-    legend.innerHTML = `<span><span class=\"dot\"></span>Latencia (μs, menor es mejor)</span>`;
+    legend.innerHTML = `<span><span class=\"dot\"></span>Latencia (Î¼s, menor es mejor)</span>`;
   }
 }
 
-/* ===== Menú móvil (hamburguesa) ===== */
+/* ===== MenÃº mÃ³vil (hamburguesa) ===== */
 function initMobileNav(){
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.getElementById('primary-menu');
@@ -220,7 +220,7 @@ function initMobileNav(){
     toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  // Cerrar al hacer click en un enlace (útil en móvil)
+  // Cerrar al hacer click en un enlace (Ãºtil en mÃ³vil)
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
     if(menu.classList.contains('open')){
       menu.classList.remove('open');
@@ -229,7 +229,7 @@ function initMobileNav(){
   }));
 }
 
-/* ===== Fondo de líneas sutiles ===== */
+/* ===== Fondo de lÃ­neas sutiles ===== */
 (function bgLinesInit(){
   const canvas = document.getElementById('bgLines');
   if(!canvas) return;
@@ -327,10 +327,10 @@ function initMobileNav(){
 
 /* ===== Inicio ===== */
 document.addEventListener("DOMContentLoaded", ()=>{
-  // Eliminar restos de la sección antigua de almacenamiento si existiera
+  // Eliminar restos de la secciÃ³n antigua de almacenamiento si existiera
   const oldStorage = document.getElementById('almacenamiento-old');
   if(oldStorage && oldStorage.parentNode){ oldStorage.parentNode.removeChild(oldStorage); }
-  // Quitar sección comparativa si existe
+  // Quitar secciÃ³n comparativa si existe
   const comp = document.getElementById('comparativa');
   if(comp && comp.parentNode){ comp.parentNode.removeChild(comp); }
 
@@ -339,9 +339,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   drawLatencyChart();
   fixHeaderHeight(); // asegurar en load
   initMobileNav();
+  initCarousels();
+  initScrollSpy();
   // Sanitizar textos visibles en secciones clave
   sanitizeTextIn(document.querySelector('.hero'));
-  // Sección renovada del corazón IA
+  // SecciÃ³n renovada del corazÃ³n IA
   sanitizeTextIn(document.getElementById('corazon-ia'));
   sanitizeTextIn(document.getElementById('almacenamiento-ssd'));
   sanitizeTextIn(document.getElementById('config-ml'));
@@ -355,36 +357,36 @@ document.addEventListener("DOMContentLoaded", ()=>{
   function sanitizeTextInOverride(container){
     if(!container) return;
     const replacements = [
-      [/��/g, '¿'],
-      [/�/g, ''],
-      [/Coraz..n/g, 'Corazón'],
-      [/M.[qǭ]uina/g, 'Máquina'],
-      [/Introducci..n/g, 'Introducción'],
-      [/Gr.[áǭ]ficos/g, 'Gráficos'],
-      [/l..gica/g, 'lógica'],
-      [/mini[- ]f.[áǭ]brica/g, 'mini‑fábrica'],
-      [/N.[úǧ]cleos/g, 'Núcleos'],
-      [/opci..n/g, 'opción'],
-      [/econ..mica/g, 'económica'],
-      [/m.[óǍ]vil/g, 'móvil'],
-      [/energ..a/g, 'energía'],
-      [/autonom..a/g, 'autonomía'],
-      [/c.[áǭ]mara/g, 'cámara'],
-      [/traducci..n/g, 'traducción'],
-      [/edici..n/g, 'edición'],
-      [/tecnolog..a/g, 'tecnología'],
-      [/m..s/g, 'más'],
-      [/r..pido/g, 'rápido'],
-      [/fr..o/g, 'frío'],
-      [/Qu.[éǸ]/g, 'Qué'],
-      [/qu.[éǸ]/g, 'qué'],
-      [/por qu.[éǸ]/gi, 'por qué'],
-      [/cu.[áǭ]nto/gi, 'cuánto'],
-      [/cu.[áǭ]nta/gi, 'cuánta'],
-      [/3000[^0-9]*7000/g, '3000–7000'],
-      [/32[^0-9]*64/g, '32–64'],
-      [/4[^0-9A-Za-z ]*\-?/g, '4× '],
-      [/Hecho por el equipo \S+/g, 'Hecho por el equipo © 2025'],
+      [/ï¿½ï¿½/g, 'Â¿'],
+      [/ï¿½/g, ''],
+      [/Coraz..n/g, 'CorazÃ³n'],
+      [/M.[qÇ­]uina/g, 'MÃ¡quina'],
+      [/Introducci..n/g, 'IntroducciÃ³n'],
+      [/Gr.[Ã¡Ç­]ficos/g, 'GrÃ¡ficos'],
+      [/l..gica/g, 'lÃ³gica'],
+      [/mini[- ]f.[Ã¡Ç­]brica/g, 'miniâ€‘fÃ¡brica'],
+      [/N.[ÃºÇ§]cleos/g, 'NÃºcleos'],
+      [/opci..n/g, 'opciÃ³n'],
+      [/econ..mica/g, 'econÃ³mica'],
+      [/m.[Ã³Ç]vil/g, 'mÃ³vil'],
+      [/energ..a/g, 'energÃ­a'],
+      [/autonom..a/g, 'autonomÃ­a'],
+      [/c.[Ã¡Ç­]mara/g, 'cÃ¡mara'],
+      [/traducci..n/g, 'traducciÃ³n'],
+      [/edici..n/g, 'ediciÃ³n'],
+      [/tecnolog..a/g, 'tecnologÃ­a'],
+      [/m..s/g, 'mÃ¡s'],
+      [/r..pido/g, 'rÃ¡pido'],
+      [/fr..o/g, 'frÃ­o'],
+      [/Qu.[Ã©Ç¸]/g, 'QuÃ©'],
+      [/qu.[Ã©Ç¸]/g, 'quÃ©'],
+      [/por qu.[Ã©Ç¸]/gi, 'por quÃ©'],
+      [/cu.[Ã¡Ç­]nto/gi, 'cuÃ¡nto'],
+      [/cu.[Ã¡Ç­]nta/gi, 'cuÃ¡nta'],
+      [/3000[^0-9]*7000/g, '3000â€“7000'],
+      [/32[^0-9]*64/g, '32â€“64'],
+      [/4[^0-9A-Za-z ]*\-?/g, '4Ã— '],
+      [/Hecho por el equipo \S+/g, 'Hecho por el equipo Â© 2025'],
     ];
     const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
     const nodes = [];
@@ -401,15 +403,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
       if(changed) n.nodeValue = txt;
     }
   }
-  // Sobrescribir la función global existente
+  // Sobrescribir la funciÃ³n global existente
   try { window.sanitizeTextIn = sanitizeTextInOverride; } catch(e){}
 
   function addSectionIcons(){
     const map = [
-      ['corazon-ia','🧠 '],
-      ['almacenamiento-ssd','💾 '],
-      ['config-ml','🧰 '],
-      ['futuro','🔭 '],
+      ['corazon-ia','ðŸ§  '],
+      ['almacenamiento-ssd','ðŸ’¾ '],
+      ['config-ml','ðŸ§° '],
+      ['futuro','ðŸ”­ '],
     ];
     for(const [id, icon] of map){
       const sec = document.getElementById(id);
@@ -422,12 +424,154 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const grafCard = document.querySelector('#almacenamiento-ssd canvas#storageCanvas');
     if(grafCard){
       const h3 = grafCard.closest('.card')?.querySelector('h3');
-      if(h3){ h3.textContent = '📊 Gráficos'; }
+      if(h3){ h3.textContent = 'ðŸ“Š GrÃ¡ficos'; }
     }
   }
 
   document.addEventListener('DOMContentLoaded', ()=>{
     try { sanitizeTextIn(document.body); } catch(e){}
-    try { addSectionIcons(); } catch(e){}
+    try { safeAddSectionIcons(); } catch(e){}
   });
 })();
+
+// Reemplazo seguro de iconos en títulos para evitar caracteres raros
+function safeAddSectionIcons(){
+  const map = [
+    ['corazon-ia','🧠 '],
+    ['almacenamiento-ssd','💾 '],
+    ['config-ml','🧰 '],
+    ['futuro','🔭 '],
+  ];
+  for(const [id, icon] of map){
+    const sec = document.getElementById(id);
+    if(!sec) continue;
+    const h2 = sec.querySelector('h2');
+    if(h2){
+      const t = h2.textContent.trim();
+      const clean = t.replace(/[�]+/g, '');
+      h2.textContent = (clean.startsWith(icon) ? '' : icon) + clean.replace(/^([🧠💾🧰🔭]\s*)+/, '');
+    }
+  }
+  const grafCanvas = document.querySelector('#almacenamiento-ssd canvas#storageCanvas');
+  if(grafCanvas){
+    const h3 = grafCanvas.closest('.card')?.querySelector('h3');
+    if(h3) h3.textContent = '📊 Gráficos';
+  }
+}
+
+// Scrollspy: resalta la sección activa en el menú
+function initScrollSpy(){
+  const links = Array.from(document.querySelectorAll('#primary-menu a'));
+  if(!links.length) return;
+  const pairs = links
+    .map(a => ({ a, id: a.getAttribute('href') || '' }))
+    .filter(p => p.id.startsWith('#'))
+    .map(p => ({ a: p.a, sec: document.querySelector(p.id) }))
+    .filter(p => p.sec);
+  if(!pairs.length) return;
+
+  let headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
+
+  function computeActive(){
+    headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || headerH;
+    const viewportTop = headerH + 8;
+    let best = null;
+    for(const {a, sec} of pairs){
+      const top = sec.getBoundingClientRect().top;
+      if(top - viewportTop <= 0){
+        if(!best || top > best.top) best = { a, top };
+      }
+    }
+    links.forEach(l=>l.classList.remove('active'));
+    if(best){
+      best.a.classList.add('active');
+    } else if(pairs[0]) {
+      pairs[0].a.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', computeActive, {passive:true});
+  window.addEventListener('resize', computeActive, {passive:true});
+  computeActive();
+
+  if(location.hash){
+    const active = links.find(l=>l.getAttribute('href') === location.hash);
+    if(active){ links.forEach(l=>l.classList.remove('active')); active.classList.add('active'); }
+  }
+}
+
+/* ===== Carrusel simple ===== */
+function initCarousels(){
+  const carousels = document.querySelectorAll('.carousel');
+  carousels.forEach((car) => {
+    const track = car.querySelector('.carousel-track');
+    const slides = Array.from(car.querySelectorAll('.carousel-slide'));
+    const prevBtn = car.querySelector('.carousel-btn.prev');
+    const nextBtn = car.querySelector('.carousel-btn.next');
+    const dotsWrap = car.querySelector('.carousel-dots');
+    if(!track || slides.length === 0) return;
+
+    let index = 0;
+    const last = slides.length - 1;
+
+    // Build dots
+    if(dotsWrap){
+      dotsWrap.innerHTML = '';
+      slides.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Ir a la imagen ' + (i+1));
+        b.addEventListener('click', ()=>goTo(i));
+        dotsWrap.appendChild(b);
+      });
+    }
+
+    function update(){
+      const offset = -index * 100; // percentage
+      track.style.transform = `translateX(${offset}%)`;
+      if(dotsWrap){
+        Array.from(dotsWrap.children).forEach((d, i)=>{
+          if(i===index) d.setAttribute('aria-current','true');
+          else d.removeAttribute('aria-current');
+        });
+      }
+      if(prevBtn) prevBtn.disabled = (index === 0);
+      if(nextBtn) nextBtn.disabled = (index === last);
+    }
+
+    function goTo(i){ index = Math.max(0, Math.min(last, i)); update(); }
+    function next(){ goTo(index+1); }
+    function prev(){ goTo(index-1); }
+
+    prevBtn && prevBtn.addEventListener('click', prev);
+    nextBtn && nextBtn.addEventListener('click', next);
+
+    // Swipe support (pointer events)
+    let startX = 0, deltaX = 0, dragging = false;
+    const viewport = car.querySelector('.carousel-viewport') || car;
+    function onDown(e){ dragging = true; startX = e.clientX || (e.touches && e.touches[0].clientX) || 0; deltaX = 0; }
+    function onMove(e){ if(!dragging) return; const x = e.clientX || (e.touches && e.touches[0].clientX) || 0; deltaX = x - startX; }
+    function onUp(){ if(!dragging) return; dragging = false; const thr = Math.max(30, viewport.clientWidth * 0.12); if(deltaX > thr) prev(); else if(deltaX < -thr) next(); }
+    viewport.addEventListener('pointerdown', onDown);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    viewport.addEventListener('touchstart', onDown, {passive:true});
+    window.addEventListener('touchmove', onMove, {passive:true});
+    window.addEventListener('touchend', onUp);
+
+    update();
+  });
+}
+
+// Overrides to prevent unwanted text mutations
+try { window.sanitizeTextIn = () => {}; } catch(e){}
+function safeAddSectionIcons(){ /* no-op to avoid encoding glitches */ }
+
+/* ===== Loader: ocultar cuando todo cargó ===== */
+window.addEventListener('load', ()=>{
+  const ld = document.getElementById('app-loader');
+  if(ld){
+    ld.classList.add('hidden');
+    ld.setAttribute('aria-busy','false');
+  }
+});

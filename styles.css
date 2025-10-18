@@ -40,6 +40,16 @@ body{
 .nav-links{display:flex; gap:16px}
 .nav-links a{color:var(--muted); text-decoration:none; font-weight:600}
 .nav-links a:hover{color:var(--fg)}
+/* Active section highlight */
+.nav-links a.active{
+  color: var(--fg);
+  position: relative;
+}
+.nav-links a.active::after{
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+  background: linear-gradient(90deg, var(--acc1), var(--acc2));
+}
 
 /* Toggle (hamburguesa) */
 .nav-toggle{display:none; background:transparent; border:0; width:40px; height:40px; padding:0; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:5px}
@@ -269,8 +279,79 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
   .nav-links.open{display:flex}
 }
 
-
-
-# Hover de títulos global para todas las tarjetas
 .card:hover h3{ color: var(--acc1); transform: translateY(-2px); }
 .card:hover h3::after{ transform: scaleX(1); }
+
+/* Section separators (gradient line + glow dot) */
+.section{ position: relative; }
+.section:not(:first-of-type)::before{
+  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:min(1100px,92vw); height:1px;
+  background:linear-gradient(90deg, transparent, color-mix(in oklab, var(--acc1) 60%, transparent), color-mix(in oklab, var(--acc2) 60%, transparent), transparent);
+  opacity:.8;
+}
+.section:not(:first-of-type)::after{
+  content:""; position:absolute; top:-3px; left:50%; transform:translateX(-50%);
+  width:10px; height:10px; border-radius:999px;
+  background:radial-gradient(circle at 50% 50%, var(--acc2) 0 50%, transparent 55%);
+  box-shadow:0 0 18px color-mix(in oklab, var(--acc2) 55%, transparent);
+  opacity:.9;
+}
+
+/* Optional manual divider */
+hr.divider{
+  border:0; height:1px; width:min(1100px,92vw); margin:32px auto; display:block;
+  background:linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+/* Loader overlay */
+.loader-overlay{
+  position: fixed; inset: 0; z-index: 10000;
+  display:flex; align-items:center; justify-content:center;
+  background: #0f1115; /* sólido para evitar flicker */
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.loader-overlay.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+.loader-box{
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; border:1px solid var(--line); border-radius:12px;
+  background:linear-gradient(180deg, var(--card), var(--card2));
+  box-shadow:0 10px 28px rgba(0,0,0,.35);
+  color:var(--fg); font-weight:700;
+}
+.spinner{
+  width:18px; height:18px; border-radius:999px;
+  border:2px solid rgba(255,255,255,.25);
+  border-top-color: var(--acc2);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Carrusel genérico dentro de tarjetas */
+.carousel{ position:relative; width:100%; margin-top:8px; }
+.carousel-viewport{ overflow:hidden; width:100%; border:1px solid var(--line); border-radius:12px; background:#000; aspect-ratio:16/9; box-shadow:0 8px 20px rgba(0,0,0,.28); }
+.carousel-track{ display:flex; width:100%; height:100%; transition: transform .35s ease; }
+.carousel-slide{ min-width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#000; }
+.carousel-slide img{ width:100%; height:100%; object-fit:contain; display:block; }
+.carousel-btn{ position:absolute; top:50%; transform:translateY(-50%); z-index:2; width:40px; height:40px; border-radius:999px; border:1px solid var(--line); background:rgba(10,12,18,.55); color:var(--fg); display:flex; align-items:center; justify-content:center; cursor:pointer; backdrop-filter: blur(4px); }
+.carousel-btn:hover{ background:rgba(10,12,18,.75); }
+.carousel-btn.prev{ left:8px; }
+.carousel-btn.next{ right:8px; }
+.carousel-dots{ position:absolute; left:50%; bottom:8px; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
+.carousel-dots button{ width:8px; height:8px; border-radius:999px; border:0; background:rgba(255,255,255,.35); cursor:pointer; padding:0; }
+.carousel-dots button[aria-current="true"]{ background:var(--acc2); }
+
+/* Pie/caption sutil */
+.caption{ color:var(--muted); font-size:12px; margin:8px 2px 0; }
+.caption a{ color:var(--muted); text-decoration:underline; }
+
+/* Fuente / bibliografía links, estilo unificado */
+.source-link{
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in oklab, var(--acc2) 55%, transparent);
+}
+.source-link:hover{
+  color: var(--fg);
+  border-bottom-style: solid;
+}
