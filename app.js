@@ -349,3 +349,85 @@ document.addEventListener("DOMContentLoaded", ()=>{
   sanitizeTextIn(document.querySelector('.site-footer'));
   sanitizeTextIn(document.getElementById('cardsComponentes'));
 });
+
+/* ===== Post-carga: limpieza de acentos + iconos ===== */
+(function(){
+  function sanitizeTextInOverride(container){
+    if(!container) return;
+    const replacements = [
+      [/��/g, '¿'],
+      [/�/g, ''],
+      [/Coraz..n/g, 'Corazón'],
+      [/M.[qǭ]uina/g, 'Máquina'],
+      [/Introducci..n/g, 'Introducción'],
+      [/Gr.[áǭ]ficos/g, 'Gráficos'],
+      [/l..gica/g, 'lógica'],
+      [/mini[- ]f.[áǭ]brica/g, 'mini‑fábrica'],
+      [/N.[úǧ]cleos/g, 'Núcleos'],
+      [/opci..n/g, 'opción'],
+      [/econ..mica/g, 'económica'],
+      [/m.[óǍ]vil/g, 'móvil'],
+      [/energ..a/g, 'energía'],
+      [/autonom..a/g, 'autonomía'],
+      [/c.[áǭ]mara/g, 'cámara'],
+      [/traducci..n/g, 'traducción'],
+      [/edici..n/g, 'edición'],
+      [/tecnolog..a/g, 'tecnología'],
+      [/m..s/g, 'más'],
+      [/r..pido/g, 'rápido'],
+      [/fr..o/g, 'frío'],
+      [/Qu.[éǸ]/g, 'Qué'],
+      [/qu.[éǸ]/g, 'qué'],
+      [/por qu.[éǸ]/gi, 'por qué'],
+      [/cu.[áǭ]nto/gi, 'cuánto'],
+      [/cu.[áǭ]nta/gi, 'cuánta'],
+      [/3000[^0-9]*7000/g, '3000–7000'],
+      [/32[^0-9]*64/g, '32–64'],
+      [/4[^0-9A-Za-z ]*\-?/g, '4× '],
+      [/Hecho por el equipo \S+/g, 'Hecho por el equipo © 2025'],
+    ];
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    for(const n of nodes){
+      let txt = n.nodeValue;
+      let changed = false;
+      for(const [pat, rep] of replacements){
+        if(pat.test(txt)){
+          txt = txt.replace(pat, rep);
+          changed = true;
+        }
+      }
+      if(changed) n.nodeValue = txt;
+    }
+  }
+  // Sobrescribir la función global existente
+  try { window.sanitizeTextIn = sanitizeTextInOverride; } catch(e){}
+
+  function addSectionIcons(){
+    const map = [
+      ['corazon-ia','🧠 '],
+      ['almacenamiento-ssd','💾 '],
+      ['config-ml','🧰 '],
+      ['futuro','🔭 '],
+    ];
+    for(const [id, icon] of map){
+      const sec = document.getElementById(id);
+      if(!sec) continue;
+      const h2 = sec.querySelector('h2');
+      if(h2 && !h2.textContent.trim().startsWith(icon)){
+        h2.textContent = icon + h2.textContent.trim();
+      }
+    }
+    const grafCard = document.querySelector('#almacenamiento-ssd canvas#storageCanvas');
+    if(grafCard){
+      const h3 = grafCard.closest('.card')?.querySelector('h3');
+      if(h3){ h3.textContent = '📊 Gráficos'; }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    try { sanitizeTextIn(document.body); } catch(e){}
+    try { addSectionIcons(); } catch(e){}
+  });
+})();
