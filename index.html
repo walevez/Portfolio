@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PC para IA y Bases de Datos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="bgLines" aria-hidden="true"></canvas>
+
+  <!-- Header / Navbar (fixed de verdad) -->
+  <header class="site-header" role="banner">
+    <div class="container nav">
+      <a href="#" class="brand">Tecnicatura IA | Ciencia de Datos</a>
+      <nav class="nav-links" role="navigation" aria-label="Principal">
+        <a href="#componentes">Componentes</a>
+        <a href="#almacenamiento">Almacenamiento</a>
+        <a href="#comparativa">Comparativa</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Compensador (lo ajusta JS a la altura real del header) -->
+  <div class="header-spacer" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Arma tu PC para <span class="grad">Inteligencia Artificial</span> y <span class="grad">Bases de Datos</span></h1>
+        <p>Hardware explicado sin vueltas: qué comprar, por qué, y cuánto rinde.</p>
+        <div class="hero-cta">
+          <a href="#componentes" class="btn primary">Explorar componentes</a>
+          <a href="#comparativa" class="btn ghost">Ver comparativa</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 300 220" class="hero-svg">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="var(--acc1)"/>
+              <stop offset="1" stop-color="var(--acc2)"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="20" width="280" height="180" rx="14" fill="url(#g)"/>
+          <circle cx="80" cy="90" r="28" fill="var(--bg)"/>
+          <rect x="130" y="70" width="120" height="14" rx="7" fill="var(--bg)"/>
+          <rect x="130" y="96" width="100" height="12" rx="6" fill="var(--bg)"/>
+          <rect x="130" y="118" width="140" height="8" rx="4" fill="var(--bg)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Componentes -->
+  <section id="componentes" class="section">
+    <div class="container">
+      <h2>Componentes clave</h2>
+      <p class="subtitle">Lo esencial y su rol cuando hablamos de IA y datos.</p>
+      <div id="cardsComponentes" class="grid cards"></div>
+    </div>
+  </section>
+
+  <!-- El Corazón Inteligente de la Máquina -->
+  <section id="corazon" class="section">
+    <div class="container">
+      <h2>El Corazón Inteligente de la Máquina</h2>
+      <p class="subtitle">CPU, NPU e iGPU trabajando en equipo.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>CPU: el cerebro general</h3>
+          <p>Ejecuta el sistema, apps y lógica secuencial.</p>
+        </article>
+        <article class="card">
+          <h3>NPU: mini-fábrica de inferencia</h3>
+          <p>Especializada en multiplicaciones de matrices con bajo consumo.</p>
+        </article>
+      </div>
+
+      <div class="table-wrapper" style="margin-top:16px">
+        <table class="corazon-table">
+          <thead>
+            <tr>
+              <th>Plataforma</th>
+              <th>Arquitectura CPU</th>
+              <th>Núcleos / Hilos</th>
+              <th>NPU (TOPS aprox.)</th>
+              <th>iGPU</th>
+              <th>Notas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ryzen AI 300 (Strix Point)</strong></td>
+              <td>Zen 5 + Zen 5c</td>
+              <td>Hasta 12c / 24t</td>
+              <td>~50</td>
+              <td>RDNA 3.5</td>
+              <td>Balance CPU/NPU/GPU</td>
+            </tr>
+            <tr>
+              <td><strong>Core Ultra 2 (Lunar Lake)</strong></td>
+              <td>P-cores + E-cores</td>
+              <td>Hasta 8c / 8t</td>
+              <td>~48</td>
+              <td>Xe2-LPG</td>
+              <td>Memoria LPDDR5X</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Almacenamiento -->
+  <section id="almacenamiento" class="section">
+    <div class="container">
+      <h2>Almacenamiento: SATA vs NVMe</h2>
+      <p class="subtitle">Velocidad y latencia importan.</p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Resumen</h3>
+          <ul class="kv">
+            <li><strong>SATA:</strong> ~550 MB/s, barato y compatible.</li>
+            <li><strong>NVMe:</strong> 3000–7000 MB/s (Gen4), &gt;10.000 (Gen5).</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Velocidad comparada</h3>
+          <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
+          <div class="legend" id="storageLegend"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparativa de Equipos -->
+  <section id="comparativa" class="section">
+    <div class="container">
+      <h2>Comparativa de Equipos IA</h2>
+      <p class="subtitle">Una bestia para entreno y una opción económica.</p>
+
+      <div class="table-wrapper">
+        <table class="equipos-table">
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Workstation Extrema</th>
+              <th>Equipo de Entrada (~USD 800)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CPU</strong></td>
+              <td>Threadripper 7980X</td>
+              <td>Ryzen 5 5600</td>
+            </tr>
+            <tr>
+              <td><strong>GPU</strong></td>
+              <td>4× RTX 4090 24GB</td>
+              <td>RTX 4060 Ti 16GB</td>
+            </tr>
+            <tr>
+              <td><strong>RAM</strong></td>
+              <td>256 GB DDR5 ECC</td>
+              <td>32 GB DDR4 3200</td>
+            </tr>
+            <tr>
+              <td><strong>Almacenamiento</strong></td>
+              <td>4 TB NVMe Gen5 + 16 TB SATA</td>
+              <td>1 TB NVMe Gen4</td>
+            </tr>
+            <tr>
+              <td><strong>Fuente</strong></td>
+              <td>2000 W 80+ Platinum</td>
+              <td>750 W 80+ Gold</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>FAQ</h2>
+      <details class="faq">
+        <summary>¿GPU o CPU para IA?</summary>
+        <p>Entrenar = GPU. Inferencia liviana/ETL = CPU+RAM.</p>
+      </details>
+      <details class="faq">
+        <summary>¿RAM “cuánta”?</summary>
+        <p>32–64 GB para empezar; 128 GB si vas fuerte con DB o VMs.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Hecho por el equipo © 2025</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
