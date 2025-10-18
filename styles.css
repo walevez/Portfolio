@@ -125,6 +125,18 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
   z-index: 1;
 }
 
+/* Imágenes responsivas dentro de tarjetas */
+.card img{max-width:100%; height:auto; display:block}
+
+/* Ajuste de imágenes en la nueva sección de CPU/GPU */
+#corazon-ia .canvas{padding:0; display:flex; align-items:center; justify-content:center}
+#corazon-ia .canvas img{width:100%; height:100%; object-fit:contain}
+
+@media (max-width: 640px){
+  /* Reducir alto visual de espacios de imagen en móviles */
+  #corazon-ia .canvas[style*="height:180px"]{height:150px !important}
+  #corazon-ia .canvas[style*="height:120px"]{height:100px !important}
+}
 
 
 /* Responsive */

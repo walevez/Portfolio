@@ -341,7 +341,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   initMobileNav();
   // Sanitizar textos visibles en secciones clave
   sanitizeTextIn(document.querySelector('.hero'));
-  sanitizeTextIn(document.getElementById('corazon'));
+  // Sección renovada del corazón IA
+  sanitizeTextIn(document.getElementById('corazon-ia'));
   sanitizeTextIn(document.getElementById('almacenamiento-ssd'));
   sanitizeTextIn(document.getElementById('config-ml'));
   sanitizeTextIn(document.getElementById('faq'));

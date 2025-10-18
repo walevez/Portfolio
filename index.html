@@ -71,7 +71,7 @@
   </section>
 
   <!-- El Corazón Inteligente de la Máquina -->
-  <section id="corazon" class="section">
+  <section id="corazon-old" class="section" style="display:none">
     <div class="container">
       <h2>El Corazón Inteligente de la Máquina</h2>
       <p class="subtitle">CPU, NPU e iGPU trabajando en equipo.</p>
@@ -118,6 +118,91 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Corazón IA (nuevo) -->
+  <section id="corazon-ia" class="section">
+    <div class="container">
+      <h2>El Corazón Inteligente de la Máquina</h2>
+      <p class="subtitle">CPU, NPU e iGPU: roles complementarios</p>
+
+      <div class="grid cards">
+        <article class="card">
+          <h3>Introducción</h3>
+          <ul>
+            <li><strong>CPU</strong>: el “cerebro general”. Ejecuta sistema, apps y lógica secuencial. Brilla en baja latencia por hilo y control.</li>
+            <li><strong>NPU</strong>: una “mini‑fábrica” para inferencia de IA (matmul y afines) con muy bajo consumo. Ideal para efectos/IA en tiempo real y tareas en segundo plano.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3 style="margin-top:16px">Procesadores (CPU)</h3>
+      <div class="grid cards">
+        <article class="card">
+          <h4>AMD Ryzen AI 300 Series “Strix Point”</h4>
+          <div class="canvas" style="height:180px; display:flex; align-items:center; justify-content:center">
+          <img src="/images/amd ryzen ai.png" alt="amd_ryzen_ai">
+          </div>
+          <p>La respuesta de AMD para notebooks con IA integrada (2024/25), mezclando núcleos Zen y una NPU XDNA 2.</p>
+          <p><strong>CPU (mixta)</strong></p>
+          <ul>
+            <li>Zen 5: núcleos “grandes” de alto rendimiento por hilo.</li>
+            <li>Zen 5c: núcleos “compactos” de alta densidad/eficiencia (misma ISA).</li>
+            <li>Cache: L2 total 12 MB, L3 total 24 MB (16 MB Zen 5 + 8 MB Zen 5c).</li>
+            <li>Ejemplo tope: Ryzen AI 9 HX 370 = 12 núcleos / 24 hilos (4 Zen 5 + 8 Zen 5c).</li>
+          </ul>
+          <p><strong>NPU (XDNA 2)</strong>: ~50 TOPS y soporte BF16; matriz de “tiles” con SRAM local y DMAs para mover datos con muy poco consumo.</p>
+          <p><strong>Gráficos</strong>: iGPU RDNA 3.5 (Radeon 800M), útil para IA por GPU y juegos ligeros.</p>
+          <p><strong>Por qué importa para IA</strong>: más hilos de CPU ayudan en pre/post‑proceso (tokenizar, compresión, I/O); la NPU toma el “matmul” repetitivo; la iGPU acelera cargas grandes optimizadas para GPU.</p>
+        </article>
+
+        <article class="card">
+          <h4>Intel Core Ultra “Lunar Lake” (Series 2)</h4>
+          <div class="canvas" style="height:180px; display:flex; align-items:center; justify-content:center">
+            <img src="/images/intel npu ia.png" alt="">
+          </div>
+          <p>El chip de Intel para notebooks finas de 2024/25, con dos tipos de núcleos y una NPU nueva (NPU 4).</p>
+          <p><strong>CPU (híbrida)</strong></p>
+          <ul>
+            <li>P‑cores (Performance): máximo rendimiento por hilo, baja latencia.</li>
+            <li>E‑cores (Efficient): ahorro de energía y paralelismo con buen rendimiento por watt.</li>
+            <li>Thread Director reparte trabajo entre P/E automáticamente.</li>
+          </ul>
+          <p><strong>Ejemplo tope</strong>: Core Ultra 9 288V: 8 núcleos/8 hilos → 4 P‑cores (Lion Cove) + 4 E‑cores (Skymont).</p>
+          <p><strong>NPU</strong>: hasta ~48 TOPS para inferencia local (traducción en vivo, efectos de cámara, subtítulos) sin agotar batería.</p>
+          <p><strong>Gráficos</strong>: iGPU Xe2‑LPG (Battlemage) para 3D e IA por GPU cuando conviene.</p>
+          <p><strong>Memoria</strong>: LPDDR5X soldada en el paquete para menor latencia y consumo (beneficia CPU, iGPU y NPU).</p>
+          <p><strong>Por qué importa para IA</strong>: si parte del modelo no entra en la NPU o requiere otra instrucción, la CPU lo toma; si es muy paralelo/gráfico, la iGPU ayuda. Combina baja latencia y buena autonomía.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top:16px">Placa de video (GPU)</h3>
+      <div class="grid cards">
+        <article class="card">
+          <h4>NVIDIA GeForce RTX 5090 (arquitectura Blackwell)</h4>
+          <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px">
+            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: Producto</div>
+            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: AMP</div>
+            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: SM Blackwell</div>
+            <div class="canvas" style="height:120px; display:flex; align-items:center; justify-content:center">Imagen: Arquitectura</div>
+          </div>
+          <ul>
+            <li><strong>Arquitectura/GPU</strong>: Blackwell / GB202; 170 SM.</li>
+            <li><strong>Cómputo</strong>: 21.760 CUDA, 680 Tensor (5ª gen), 170 RT (4ª gen).</li>
+            <li><strong>Reloj boost</strong>: ~2407 MHz (ref.).</li>
+            <li><strong>Memoria</strong>: 32 GB GDDR7, 512‑bit, 28 Gbps, 1.792 GB/s.</li>
+            <li><strong>Caché</strong>: L2 96 MB.</li>
+            <li><strong>Interfaz/TGP</strong>: PCIe 5.0, ~575 W (ref.).</li>
+            <li><strong>Novedades</strong>: FP4 en Tensor Cores (hasta 2× vs FP8), DLSS 4 MFG, SM optimizados para neural shaders.</li>
+          </ul>
+          <p>La RTX 5090 es tope de gama: paralelismo masivo con 32 GB GDDR7 y hardware dedicado para IA y ray tracing. Permite modelos grandes, lotes altos y edición/juegos a resoluciones muy altas.</p>
+          <p>El “AI Management Processor (AMP)” orquesta tareas dentro de la GPU: prioriza la respuesta del modelo y ordena el render para frames estables. Sin AMP, IA y gráficos compiten por recursos y puede haber picos de latencia.</p>
+          <p>El SM Blackwell integra Tensor Cores de 5ª gen preparados para neural shaders (FP4/FP8/FP16) con gran rendimiento por vatio en IA.</p>
+          <p>Resumen: Tensor Cores para redes, RT Cores para geometría, AMP para coordinar, y GDDR7 ultrarrápida alimentando todo: más calidad + más FPS con IA rápida y frames estables.</p>
+        </article>
       </div>
 
     </div>
