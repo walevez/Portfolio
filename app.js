@@ -98,40 +98,114 @@ function drawStorageChart(){
   const values = [120, 550, 3200, 7000, 11000];
   const max = Math.max(...values) * 1.15;
 
+  // Márgenes y ejes
+  const plot = { left: 80, right: 20, top: 20, bottom: 40 };
   ctx.strokeStyle = "rgba(255,255,255,0.25)";
-  ctx.beginPath(); ctx.moveTo(60,20); ctx.lineTo(60,h-40); ctx.lineTo(w-20,h-40); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(plot.left, plot.top);
+  ctx.lineTo(plot.left, h - plot.bottom);
+  ctx.lineTo(w - plot.right, h - plot.bottom);
+  ctx.stroke();
 
-  const barW = (w-120) / labels.length * 0.6;
-  const step = (w-120) / labels.length;
-  for(let i=0;i<labels.length;i++){
-    const x = 80 + i*step - barW/2;
-    const bh = (values[i] / max) * (h-80);
+  // Barras posicionadas dentro del área de dibujo
+  const step = (w - plot.left - plot.right) / labels.length;
+  const barW = step * 0.6;
+  for (let i=0; i<labels.length; i++){
+    const x = plot.left + i*step + (step - barW)/2;
+    const bh = (values[i] / max) * (h - plot.top - plot.bottom);
     const color = i===0 ? "#9fa7b3" : (i===1 ? "#7de2ff" : (i===2 ? "#a78bfa" : (i===3 ? "#6ee7f8" : "#d4bfff")));
     ctx.fillStyle = color;
-    ctx.fillRect(x, (h-40)-bh, barW, bh);
+    ctx.fillRect(x, (h - plot.bottom) - bh, barW, bh);
 
+    // Etiquetas inferiores
     ctx.fillStyle = "rgba(255,255,255,0.85)";
     ctx.font = "12px system-ui";
     ctx.textAlign = "center";
-    ctx.fillText(labels[i], x + barW/2, h-20);
+    ctx.fillText(labels[i], x + barW/2, h - 20);
 
+    // Valor encima de barra
     ctx.fillStyle = "rgba(255,255,255,0.75)";
     ctx.font = "11px system-ui";
-    ctx.fillText(values[i] + " MB/s", x + barW/2, (h-48)-bh);
+    ctx.fillText(values[i] + " MB/s", x + barW/2, (h - plot.bottom - 8) - bh);
   }
 
+  // Eje Y: ticks y líneas guía, con etiquetas a la izquierda del eje
   ctx.fillStyle = "rgba(255,255,255,0.6)";
   ctx.textAlign = "right";
   const tick = 2000;
-  for(let t=0; t<=max; t+=tick){
-    const y = (h-40) - (t/max)*(h-80);
-    ctx.fillText(t, 55, y+4);
-    ctx.globalAlpha = 0.08; ctx.beginPath(); ctx.moveTo(60,y); ctx.lineTo(w-20,y); ctx.stroke(); ctx.globalAlpha=1;
+  for (let t=0; t<=max; t+=tick){
+    const y = (h - plot.bottom) - (t / max) * (h - plot.top - plot.bottom);
+    ctx.fillText(String(t), plot.left - 6, y + 4);
+    ctx.globalAlpha = 0.08; ctx.beginPath(); ctx.moveTo(plot.left, y); ctx.lineTo(w - plot.right, y); ctx.stroke(); ctx.globalAlpha = 1;
   }
 
   const legend = document.getElementById("storageLegend");
-  if(legend){
+  if (legend){
     legend.innerHTML = `<span><span class="dot"></span>Velocidad secuencial (MB/s)</span>`;
+  }
+}
+
+/* ===== Gráfico de latencia (μs, menor es mejor) ===== */
+function drawLatencyChart(){
+  const canvas = document.getElementById("latencyCanvas");
+  if(!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+
+  const bg = getComputedStyle(document.documentElement).getPropertyValue("--card2") || "#10131c";
+  ctx.fillStyle = bg; ctx.fillRect(0,0,w,h);
+
+  const labels = ["HDD", "SSD SATA", "NVMe Gen3", "NVMe Gen4", "NVMe Gen5"];
+  // Valores aproximados en microsegundos (μs)
+  const values = [4000, 100, 30, 20, 15];
+  const max = Math.max(...values) * 1.15;
+
+  // Márgenes y ejes
+  const plot = { left: 80, right: 20, top: 20, bottom: 40 };
+  ctx.strokeStyle = "rgba(255,255,255,0.25)";
+  ctx.beginPath();
+  ctx.moveTo(plot.left, plot.top);
+  ctx.lineTo(plot.left, h - plot.bottom);
+  ctx.lineTo(w - plot.right, h - plot.bottom);
+  ctx.stroke();
+
+  // Barras posicionadas dentro del área de dibujo
+  const step = (w - plot.left - plot.right) / labels.length;
+  const barW = step * 0.6;
+  for (let i=0; i<labels.length; i++){
+    const x = plot.left + i*step + (step - barW)/2;
+    const bh = (values[i] / max) * (h - plot.top - plot.bottom);
+    const color = i===0 ? "#9fa7b3" : (i===1 ? "#7de2ff" : (i===2 ? "#a78bfa" : (i===3 ? "#6ee7f8" : "#d4bfff")));
+    ctx.fillStyle = color;
+    ctx.fillRect(x, (h - plot.bottom) - bh, barW, bh);
+
+    // Etiquetas inferiores
+    ctx.fillStyle = "rgba(255,255,255,0.85)";
+    ctx.font = "12px system-ui";
+    ctx.textAlign = "center";
+    ctx.fillText(labels[i], x + barW/2, h - 20);
+
+    // Valor encima de barra
+    ctx.fillStyle = "rgba(255,255,255,0.75)";
+    ctx.font = "11px system-ui";
+    ctx.fillText(values[i] + " μs", x + barW/2, (h - plot.bottom - 8) - bh);
+  }
+
+  // Eje Y: ticks y líneas guía, etiquetas a la izquierda del eje para no superponer
+  ctx.fillStyle = "rgba(255,255,255,0.6)";
+  ctx.textAlign = "right";
+  const ticks = [0, 20, 50, 100, 500, 1000, 2000, 4000];
+  for (const t of ticks){
+    const y = (h - plot.bottom) - (t / max) * (h - plot.top - plot.bottom);
+    if (y < plot.top) continue;
+    ctx.fillText(String(t), plot.left - 6, y + 4);
+    ctx.globalAlpha = 0.08; ctx.beginPath(); ctx.moveTo(plot.left, y); ctx.lineTo(w - plot.right, y); ctx.stroke(); ctx.globalAlpha = 1;
+  }
+
+  const legend = document.getElementById("latencyLegend");
+  if (legend){
+    legend.innerHTML = `<span><span class=\"dot\"></span>Latencia (μs, menor es mejor)</span>`;
   }
 }
 
@@ -253,15 +327,23 @@ function initMobileNav(){
 
 /* ===== Inicio ===== */
 document.addEventListener("DOMContentLoaded", ()=>{
+  // Eliminar restos de la sección antigua de almacenamiento si existiera
+  const oldStorage = document.getElementById('almacenamiento-old');
+  if(oldStorage && oldStorage.parentNode){ oldStorage.parentNode.removeChild(oldStorage); }
+  // Quitar sección comparativa si existe
+  const comp = document.getElementById('comparativa');
+  if(comp && comp.parentNode){ comp.parentNode.removeChild(comp); }
+
   renderComponentes();
   drawStorageChart();
+  drawLatencyChart();
   fixHeaderHeight(); // asegurar en load
   initMobileNav();
   // Sanitizar textos visibles en secciones clave
   sanitizeTextIn(document.querySelector('.hero'));
   sanitizeTextIn(document.getElementById('corazon'));
-  sanitizeTextIn(document.getElementById('almacenamiento'));
-  sanitizeTextIn(document.getElementById('comparativa'));
+  sanitizeTextIn(document.getElementById('almacenamiento-ssd'));
+  sanitizeTextIn(document.getElementById('config-ml'));
   sanitizeTextIn(document.getElementById('faq'));
   sanitizeTextIn(document.querySelector('.site-footer'));
   sanitizeTextIn(document.getElementById('cardsComponentes'));

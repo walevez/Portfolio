@@ -92,12 +92,9 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 .faq{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:10px}
 .faq summary{cursor:pointer; font-weight:700}
 
-/* Footer */
-.site-footer{padding:48px 0; border-top:1px solid var(--line); margin-top:40px}
-.site-footer p{color:var(--muted); text-align:center}
 /* Footer staff */
-.footer-staff{margin-top:12px}
-.footer-staff h4{margin:12px 0 10px; font-size:16px; text-align:center}
+.footer-staff{margin:40px 0 60px 0}
+.footer-staff h4{margin:20px 0 20px 0; font-size:16px; text-align:center}
 .staff-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -106,6 +103,10 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
   color:var(--muted);
 }
 .staff-grid span{font-weight:600}
+
+/* Footer */
+.site-footer{padding:40px 0 5px 0; border-top:1px solid var(--line); margin-top:40px}
+.site-footer p{color:var(--muted); text-align:center}
 
 /* Fondo animado de líneas */
 #bgLines{

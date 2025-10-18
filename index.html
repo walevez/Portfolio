@@ -20,8 +20,9 @@
       </button>
       <nav id="primary-menu" class="nav-links" role="navigation" aria-label="Principal">
         <a href="#componentes">Componentes</a>
-        <a href="#almacenamiento">Almacenamiento</a>
-        <a href="#comparativa">Comparativa</a>
+        <a href="#almacenamiento-ssd">Almacenamiento</a>
+        <a href="#config-ml">Configuración ML</a>
+        <a href="#futuro">Mirando al futuro</a>
         <a href="#faq">FAQ</a>
       </nav>
     </div>
@@ -122,7 +123,7 @@
   </section>
 
   <!-- Almacenamiento -->
-  <section id="almacenamiento" class="section">
+  <section id="almacenamiento-old" class="section" style="display:none">
     <div class="container">
       <h2>Almacenamiento: SATA vs NVMe</h2>
       <p class="subtitle">Velocidad y latencia importan.</p>
@@ -142,6 +143,234 @@
           <div class="legend" id="storageLegend"></div>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- NUEVO: Almacenamiento SATA vs NVMe -->
+  <section id="almacenamiento-ssd" class="section">
+    <div class="container">
+      <h2>La Batalla de los SSD: SATA vs NVMe</h2>
+      <p class="subtitle">¿Qué son y por qué importa?</p>
+
+      <div class="grid cards">
+        <article class="card">
+          <h3>¿Qué es un SSD?</h3>
+          <p>
+            Un SSD usa memoria flash NAND para guardar datos de forma persistente y no tiene partes móviles, a diferencia de los HDD.
+            Esto habilita mayor velocidad, fiabilidad y operación silenciosa.
+          </p>
+          <ul class="kv">
+            <li>▪️ <strong>SATA</strong> → Tecnología más antigua, confiable y económica.</li>
+            <li>▪️ <strong>NVMe</strong> → Nueva generación en PCIe, diseñada para velocidad.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>La ruta vs la autopista</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tecnología</th>
+                  <th>Comparación</th>
+                  <th>Velocidad aproximada</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SATA</td>
+                  <td>Ruta de 2 carriles</td>
+                  <td>Hasta 550 MB/s</td>
+                </tr>
+                <tr>
+                  <td>NVMe</td>
+                  <td>Autopista de 8 carriles</td>
+                  <td>Entre 3000 y 7000 MB/s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
+        </article>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>Comparativa General</h3>
+          <details class="faq" open>
+            <summary>SATA</summary>
+            <div>
+              <p><strong>Ventajas</strong></p>
+              <ul>
+                <li>Compatibilidad altísima (PCs viejas y nuevas)</li>
+                <li>Más barato por GB</li>
+                <li>Ideal para archivos, backups o datos poco usados</li>
+              </ul>
+              <p><strong>Desventajas</strong></p>
+              <ul>
+                <li>Máximo ~600 MB/s (tope del bus)</li>
+                <li>Queda corto para SSD modernos</li>
+                <li>No sirve bien para cargas intensivas o baja latencia</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>NVMe</summary>
+            <div>
+              <p><strong>Ventajas</strong></p>
+              <ul>
+                <li>Usa PCIe (mucho más rápido)</li>
+                <li>Latencia muy baja</li>
+                <li>Formatos M.2 compactos</li>
+                <li>Ideal para IA, videojuegos, edición, bases de datos, render</li>
+              </ul>
+              <p><strong>Desventajas</strong></p>
+              <ul>
+                <li>Más caro por GB</li>
+                <li>No todas las PCs viejas lo soportan</li>
+                <li>Menos práctico para datos masivos a bajo costo</li>
+              </ul>
+            </div>
+          </details>
+        </article>
+        <article class="card">
+          <h3>Gráficos</h3>
+          <p class="kv">Velocidad secuencial (MB/s)</p>
+          <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
+          <div class="legend" id="storageLegend"></div>
+          <p class="kv" style="margin-top:14px">Latencia (μs, menor es mejor)</p>
+          <canvas id="latencyCanvas" width="900" height="320" class="canvas"></canvas>
+          <div class="legend" id="latencyLegend"></div>
+        </article>
+      </div>
+
+      <details class="faq">
+        <summary>¿Por qué es clave para IA y datasets grandes?</summary>
+        <div>
+          <p>En escenarios de entrenamiento con millones de muestras:</p>
+          <ul>
+            <li>Con SATA → los datos entran de a poco, como autos en ruta vieja.</li>
+            <li>Con NVMe → fluyen a toda velocidad, como autopista con muchos carriles.</li>
+          </ul>
+          <ul>
+            <li>⚡ Menor tiempo de carga</li>
+            <li>⚡ Menos cuellos de botella</li>
+            <li>⚡ Entrenamientos más rápidos y eficientes</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Tipos y formatos</summary>
+        <div class="grid cards">
+          <article class="card">
+            <h4>SATA</h4>
+            <ul>
+              <li>2.5 pulgadas (SSD)</li>
+              <li>Conector SATA tradicional</li>
+              <li>Algunos M.2 usan SATA (más lentos)</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>NVMe</h4>
+            <ul>
+              <li>M.2 (2280 estándar)</li>
+              <li>U.2 (datacenters)</li>
+              <li>PCIe (tarjeta) rendimiento extremo</li>
+            </ul>
+          </article>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Cuándo conviene cada uno?</summary>
+        <div class="grid cards">
+          <article class="card">
+            <h4>SATA si…</h4>
+            <ul>
+              <li>Querés ahorrar dinero</li>
+              <li>Guardás archivos, backups o cosas poco usadas</li>
+              <li>Tenés una PC vieja sin ranura M.2</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>NVMe si…</h4>
+            <ul>
+              <li>IA, bases de datos, edición, render o gaming</li>
+              <li>Necesitás velocidad para cargar/transferir</li>
+              <li>Rendimiento óptimo en notebooks o PCs nuevas</li>
+            </ul>
+          </article>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Versión en tabla (comparativa completa)</summary>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>SSD SATA</th>
+                <th>SSD NVMe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Interfaz / Bus</td><td>SATA (AHCI)</td><td>PCIe</td></tr>
+              <tr><td>Velocidad máx. aprox.</td><td>Hasta 550 MB/s</td><td>3.000–7.000 MB/s (según PCIe)</td></tr>
+              <tr><td>Latencia</td><td>Más alta</td><td>Muy baja</td></tr>
+              <tr><td>Colas de comando</td><td>1 cola · 32 comandos</td><td>Hasta 65.535 colas · 65.536 comandos</td></tr>
+              <tr><td>Formato habitual</td><td>2.5” / M.2 SATA</td><td>M.2 NVMe / U.2 / PCIe</td></tr>
+              <tr><td>Compatibilidad</td><td>Altísima</td><td>PCs modernas con PCIe/M.2</td></tr>
+              <tr><td>Costo por GB</td><td>Más económico</td><td>Más caro</td></tr>
+              <tr><td>Uso ideal</td><td>Archivos, backups, uso general</td><td>Gaming, IA, bases de datos, cargas pesadas</td></tr>
+              <tr><td>Consumo</td><td>Bajo</td><td>Bajo – medio</td></tr>
+              <tr><td>Instalación</td><td>Cable SATA + energía</td><td>Directo M.2/PCIe</td></tr>
+              <tr><td>Capacidades típicas</td><td>240GB – 4TB</td><td>500GB – 8TB (+)</td></tr>
+              <tr><td>Limitaciones</td><td>Tope bus SATA (6Gbps)</td><td>No compatible con hardware muy viejo</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>¿Qué es PCIe Gen5?</summary>
+        <div>
+          <p>PCIe Gen5 duplica el ancho de banda de Gen4 (hasta 32 GT/s) y habilita lecturas ~2.5× más rápidas y escrituras hasta ~5× más rápidas que Gen4, logrando el SSD más veloz en PC hoy.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Compatibilidad</summary>
+        <div>
+          <p>Ryzen serie 7000+ y Core 12ª–14ª soportan PCIe 5.0. Requiere motherboard compatible (AMD X670E/X670/B650E; Intel Z890/Z790/Z690). Verificar la placa específica.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Tecnología DirectStorage</summary>
+        <div>
+          <p>API de Microsoft que aprovecha SSD NVMe y GPU-driven IO para reducir latencia y carga en CPU, y acelerar descompresión por GPU.</p>
+          <ul>
+            <li>Menos carga sobre CPU</li>
+            <li>Menos cuellos de botella</li>
+            <li>Mejores tiempos de carga</li>
+          </ul>
+          <p>En IA: datasets gigantes cargan más rápido y se alimenta mejor a la GPU.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Bibliografía</summary>
+        <div>
+          <ul>
+            <li><a href="https://semiconductor.samsung.com/news-events/tech-blog/sata-vs-nvme-ssds-which-interface-is-right-for-your-business/" target="_blank" rel="noopener">Samsung: SATA vs NVMe</a></li>
+            <li><a href="https://www.kingston.com/es/blog/pc-performance/nvme-vs-sata" target="_blank" rel="noopener">Kingston: NVMe vs SATA</a></li>
+            <li><a href="https://www.adata.com/ar/quikTips/difference-ssd-sata-vs-nvme/" target="_blank" rel="noopener">ADATA: diferencias</a></li>
+            <li><a href="https://www.kingston.com/latam/blog/pc-performance/what-is-pcie-gen5-ssd" target="_blank" rel="noopener">¿Qué es PCIe Gen5?</a></li>
+            <li><a href="https://devblogs.microsoft.com/directx/directstorage-is-coming-to-pc/" target="_blank" rel="noopener">DirectStorage en PC</a></li>
+          </ul>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -190,6 +419,157 @@
         </table>
       </div>
 
+    </div>
+  </section>
+
+  <!-- Configuración ML -->
+  <section id="config-ml" class="section">
+    <div class="container">
+      <h2>Configuración de PC para Científico de Datos</h2>
+      <p class="subtitle">Especialista en Modelos de Lenguaje</p>
+
+      <div class="grid cards">
+        <article class="card">
+          <h3>Optimización de Hardware para Machine Learning</h3>
+          <p>Dos configuraciones enfocadas en LLMs: una premium sin límites de presupuesto y una económica con la mejor relación costo/beneficio.</p>
+        </article>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <h3>🏆 "Money is No Object" — La Bestia Absoluta</h3>
+          <p class="kv">Especificaciones Premium · $18,000–22,000 USD</p>
+          <ul>
+            <li><strong>CPU:</strong> AMD Ryzen Threadripper 7980X (64c/128t) — Preprocesamiento paralelo masivo y múltiples experimentos en simultáneo.</li>
+            <li><strong>GPU:</strong> 4× NVIDIA RTX 4090 24GB — 96GB VRAM total; clave para modelos grandes. Ada Lovelace con FP8 y transform engines.</li>
+            <li><strong>RAM:</strong> 512GB DDR5 4800 (8×64GB) — Datasets masivos en memoria; buffers para 70B+ parámetros.</li>
+            <li><strong>Almacenamiento:</strong> 4TB NVMe Gen5 + 16TB SSD SATA — Gen5 para checkpoints; SATA para datasets sin comprimir.</li>
+            <li><strong>Placa Base:</strong> ASUS Pro WS TRX50-SAGE WIFI — 4 GPUs full-size sin throttling, 8 slots DDR5, múltiples M.2 con disipación activa.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>💡 "El Punto Dulce" — Hasta $800 USD</h3>
+          <p class="kv">Especificaciones Económicas · ~$800 USD</p>
+          <ul>
+            <li><strong>GPU:</strong> NVIDIA RTX 4060 Ti 16GB (~$450) — 16GB VRAM para fine-tuning 7B–13B con eficiencia Ada.</li>
+            <li><strong>CPU:</strong> AMD Ryzen 5 5600 (~$130) — 6c suficientes para ETL; PCIe 4.0; 65W TDP.</li>
+            <li><strong>RAM:</strong> 32GB DDR4 3200 (2×16GB) (~$65) — Balance costo/capacidad; DDR4 más accesible.</li>
+            <li><strong>Almacenamiento:</strong> 1TB NVMe Gen4 (~$80) — 5GB/s+ para carga rápida de modelos y proyectos.</li>
+            <li><strong>Placa Base:</strong> ASRock B550M-HDV (~$75) — PCIe 4.0, 4 slots RAM, conectividad confiable.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="table-wrapper" style="margin-top:16px">
+        <table>
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Premium (Money is No Object)</th>
+              <th>Económico (El Punto Dulce)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>CPU</strong></td><td>Threadripper 7980X (64c/128t)</td><td>Ryzen 5 5600 (6c/12t)</td></tr>
+            <tr><td><strong>GPU</strong></td><td>4× RTX 4090 24GB (96GB VRAM)</td><td>RTX 4060 Ti 16GB</td></tr>
+            <tr><td><strong>RAM</strong></td><td>512GB DDR5 4800 (8×64GB)</td><td>32GB DDR4 3200 (2×16GB)</td></tr>
+            <tr><td><strong>Almacenamiento</strong></td><td>4TB NVMe Gen5 + 16TB SSD SATA</td><td>1TB NVMe Gen4</td></tr>
+            <tr><td><strong>Placa Base</strong></td><td>ASUS Pro WS TRX50-SAGE WIFI</td><td>ASRock B550M-HDV</td></tr>
+            <tr><td><strong>Presupuesto</strong></td><td>$18,000–22,000 USD</td><td>~$800 USD</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <details class="faq" open>
+        <summary>🔍 Análisis de compromisos (presupuesto ajustado)</summary>
+        <div class="grid cards">
+          <article class="card">
+            <h4>Donde ahorramos inteligentemente</h4>
+            <ul>
+              <li>CPU: menos núcleos, misma arquitectura</li>
+              <li>RAM: DDR4 vs DDR5</li>
+              <li>GPU: una sola vs múltiples</li>
+              <li>Almacenamiento: calidad sobre cantidad</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Donde NO comprometimos</h4>
+            <ul>
+              <li>✅ VRAM suficiente (16GB mínimo)</li>
+              <li>✅ Arquitectura GPU moderna (Ada Lovelace)</li>
+              <li>✅ SSD NVMe rápido</li>
+              <li>✅ 32GB RAM mínima</li>
+            </ul>
+          </article>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>📚 Bibliografía y fuentes</summary>
+        <div>
+          <ul>
+            <li><a href="https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/" target="_blank" rel="noopener">Tim Dettmers — Which GPU for deep learning?</a></li>
+            <li><a href="https://www.pugetsystems.com/solutions/machine-learning-workstations/" target="_blank" rel="noopener">Puget Systems — ML Workstation Recommendations</a></li>
+            <li><a href="https://lambdalabs.com/gpu-benchmarks" target="_blank" rel="noopener">Lambda Labs — GPU Benchmarks</a></li>
+            <li><a href="https://huggingface.co/docs/transformers/perf_train_gpu_one" target="_blank" rel="noopener">Hugging Face — Transformers perf train on one GPU</a></li>
+            <li><a href="https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html" target="_blank" rel="noopener">PyTorch — GPU Performance Tuning Guide</a></li>
+            <li><a href="https://www.techspot.com/gpu-hierarchy/" target="_blank" rel="noopener">TechSpot — GPU Hierarchy</a></li>
+            <li><a href="https://www.userbenchmark.com/" target="_blank" rel="noopener">UserBenchmark — Real World Performance</a></li>
+            <li><a href="https://reddit.com/r/MachineLearning" target="_blank" rel="noopener">Reddit — r/MachineLearning</a></li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>🎯 Conclusión profesional</summary>
+        <div>
+          <p>La configuración premium es ideal para investigación/producción a escala enterprise. La económica es el mínimo viable profesional para un científico de datos serio.</p>
+          <p>Ambas priorizan la VRAM por encima del resto: en ML moderno, la memoria de GPU es el recurso más escaso y valioso. Recomendación: comenzar con la económica y escalar a cloud para experimentos que excedan su capacidad local.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Mirando al futuro -->
+  <section id="futuro" class="section">
+    <div class="container">
+      <h2>Mirando al futuro</h2>
+      <p class="subtitle">Cúbits semiconductores y la próxima era</p>
+
+      <div class="grid cards">
+        <article class="card">
+          <h3>¿Qué son los cúbits semiconductores?</h3>
+          <p>
+            Son bits cuánticos implementados en materiales semiconductores (como silicio) que aprovechan propiedades cuánticas
+            para representar 0 y 1 al mismo tiempo. Buscan combinar escalabilidad de la industria del chip con el poder de la
+            computación cuántica.
+          </p>
+          <ul class="kv">
+            <li>Objetivo: menor error y mayor estabilidad.</li>
+            <li>Ventaja potencial: fabricación más cercana a procesos CMOS.</li>
+            <li>Reto: sensibilidad al ruido y a condiciones extremas.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Impacto potencial</h3>
+          <ul>
+            <li>Nuevos materiales y química acelerada</li>
+            <li>Optimización de procesos industriales y logísticos</li>
+            <li>Avances en fármacos y simulaciones complejas</li>
+          </ul>
+        </article>
+      </div>
+
+      <details class="faq" open>
+        <summary>Bibliografía</summary>
+        <div>
+          <ul>
+            <li><a href="https://www.fundacionbankinter.org/noticias/del-silicio-al-quantum-la-nueva-era-de-los-chips/" target="_blank" rel="noopener">Del silicio al quantum: la nueva era de los chips</a></li>
+          </ul>
+        </div>
+      </details>
     </div>
   </section>
 
