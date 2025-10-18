@@ -286,14 +286,13 @@
           </ul>
         </article>
         <!-- Comparativa General: dos secciones paralelas con espacio para imágenes -->
-        <article class="card full-row">
+        <article class="card full-row" id="card-comparativa">
           <h3>Comparativa General</h3>
           <div class="compare-split">
             <section class="pane">
               <h4>SATA</h4>
               <div class="img-slot">
-                <!-- Coloca aquí una imagen SATA si querés -->
-                <!-- <img src="ruta/a/imagen-sata.jpg" alt="SSD SATA" /> -->
+                <img src="/images/SATA.webp" alt="Disco_SATA">
               </div>
               <ul>
                 <li>Compatibilidad altísima (PCs viejas y nuevas)</li>
@@ -305,8 +304,7 @@
             <section class="pane">
               <h4>NVMe</h4>
               <div class="img-slot">
-                <!-- Coloca aquí una imagen NVMe si querés -->
-                <!-- <img src="ruta/a/imagen-nvme.jpg" alt="SSD NVMe" /> -->
+                <img src="/images/Nvme.png" alt="Disco_NVme">
               </div>
               <ul>
                 <li>Usa PCIe (3.000–7.000+ MB/s según generación)</li>
@@ -347,7 +345,7 @@
           </div>
           <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
         </article>
-        <article class="card">
+        <article class="card" id="card-graficos">
           <h3>Groficos</h3>
           <p class="kv">Velocidad secuencial (MB/s)</p>
           <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
