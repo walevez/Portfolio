@@ -100,8 +100,8 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
   opacity: .16;
 }
 
-/* Contenido sobre el canvas */
-.site-header, .section, .site-footer{
+/* Contenido sobre el canvas (excluye header para no romper su fixed) */
+.section, .site-footer{
   position: relative;
   z-index: 1;
 }
