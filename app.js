@@ -350,6 +350,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
   sanitizeTextIn(document.getElementById('faq'));
   sanitizeTextIn(document.querySelector('.site-footer'));
   sanitizeTextIn(document.getElementById('cardsComponentes'));
+
+  // Mover el badge Sectigo al renglón del texto del footer
+  try{
+    const badge = document.getElementById('comodoTL');
+    const footerText = document.querySelector('.site-footer .container > p');
+    if(badge && footerText){
+      // Insertar al inicio, para que quede a la izquierda del texto
+      if(!footerText.contains(badge)){
+        footerText.insertBefore(badge, footerText.firstChild);
+      } else if(footerText.firstChild !== badge){
+        footerText.insertBefore(badge, footerText.firstChild);
+      }
+      // Asegurar imagen dentro del enlace y estilo inline
+      if(!badge.querySelector('img')){
+        badge.textContent = '';
+        const img = document.createElement('img');
+        img.alt = 'Sectigo PositiveSSL';
+        img.src = 'https://micuenta.donweb.com/img/sectigo_positive_sm.png';
+        badge.appendChild(img);
+      }
+      badge.classList.add('footer-badge');
+    }
+  }catch(_){}
 });
 
 /* ===== Post-carga: limpieza de acentos + iconos ===== */
@@ -574,4 +597,17 @@ window.addEventListener('load', ()=>{
     ld.classList.add('hidden');
     ld.setAttribute('aria-busy','false');
   }
+
+  // Footer badge: ensure inline next to text, remove floating badge if injected
+  try{
+    // Ya usamos #comodoTL como badge; sólo limpiamos instancias sueltas
+    // Hide/remove other trustlogo instances
+    document.querySelectorAll('img[src*="sectigo_positive_sm"]').forEach(img => {
+      if(!img.closest('.site-footer')){
+        img.remove();
+      }
+    });
+    const tl = document.getElementById('comodoTL');
+    if(tl && !tl.closest('.site-footer')) tl.style.display = 'none';
+  }catch(_){ }
 });

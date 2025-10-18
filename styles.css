@@ -202,7 +202,18 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 
 /* Footer */
 .site-footer{padding:40px 0 5px 0; border-top:1px solid var(--line); margin-top:40px}
-.site-footer p{color:var(--muted); text-align:center}
+.site-footer p{color:var(--muted); text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; position:relative}
+/* Trust/Sectigo badge inline con el texto del footer */
+#comodoTL{
+  position:absolute; left:0; top:50%; transform:translateY(-50%);
+  display:inline-flex; align-items:center; gap:4px;
+  text-decoration:none; color:inherit;
+}
+#comodoTL img{ height:18px; width:auto; display:block; }
+
+/* Footer inline badge (preferred) */
+.footer-badge{ display:inline-flex; align-items:center; gap:4px; margin-left:0; vertical-align:middle; }
+.footer-badge img{ height:18px; width:auto; display:block; }
 
 /* Fondo animado de líneas */
 #bgLines{
