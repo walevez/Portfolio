@@ -78,6 +78,44 @@
           <p>Ejecuta el sistema, apps y lógica secuencial.</p>
         </article>
         <article class="card">
+          <h3>Comparativa General</h3>
+          <details class="faq" open>
+            <summary>SATA</summary>
+            <div>
+              <p><strong>Ventajas</strong></p>
+              <ul>
+                <li>Compatibilidad alt��sima (PCs viejas y nuevas)</li>
+                <li>Mǭs barato por GB</li>
+                <li>Ideal para archivos, backups o datos poco usados</li>
+              </ul>
+              <p><strong>Desventajas</strong></p>
+              <ul>
+                <li>Mǭximo ~600 MB/s (tope del bus)</li>
+                <li>Queda corto para SSD modernos</li>
+                <li>No sirve bien para cargas intensivas o baja latencia</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>NVMe</summary>
+            <div>
+              <p><strong>Ventajas</strong></p>
+              <ul>
+                <li>Usa PCIe (mucho mǭs rǭpido)</li>
+                <li>Latencia muy baja</li>
+                <li>Formatos M.2 compactos</li>
+                <li>Ideal para IA, videojuegos, edici��n, bases de datos, render</li>
+              </ul>
+              <p><strong>Desventajas</strong></p>
+              <ul>
+                <li>Mǭs caro por GB</li>
+                <li>No todas las PCs viejas lo soportan</li>
+                <li>Menos prǭctico para datos masivos a bajo costo</li>
+              </ul>
+            </div>
+          </details>
+        </article>
+        <article class="card">
           <h3>NPU: mini-fábrica de inferencia</h3>
           <p>Especializada en multiplicaciones de matrices con bajo consumo.</p>
         </article>
@@ -246,7 +284,46 @@
             <li>▪️ <strong>NVMe</strong> → Nueva generación en PCIe, diseñada para velocidad.</li>
           </ul>
         </article>
+        <!-- Nueva ubicación: Comparativa General reemplaza a "La ruta vs la autopista" en la grilla superior -->
         <article class="card">
+          <h3>Comparativa General</h3>
+          <details class="faq" open>
+            <summary>SATA</summary>
+            <div>
+              <p><strong>Ventajas</strong></p>
+              <ul>
+                <li>Compatibilidad altísima (PCs viejas y nuevas)</li>
+                <li>Más barato por GB</li>
+                <li>Ideal para archivos, backups o datos poco usados</li>
+              </ul>
+              <p><strong>Desventajas</strong></p>
+              <ul>
+                <li>Máximo ~600 MB/s (tope del bus)</li>
+                <li>Queda corto para SSD modernos</li>
+                <li>No sirve bien para cargas intensivas o baja latencia</li>
+              </ul>
+            </div>
+          </details>
+          <details class="faq">
+            <summary>NVMe</summary>
+            <div>
+              <p><strong>Ventajas</strong></p>
+              <ul>
+                <li>Usa PCIe (mucho más rápido)</li>
+                <li>Latencia muy baja</li>
+                <li>Formatos M.2 compactos</li>
+                <li>Ideal para IA, videojuegos, edición, bases de datos, render</li>
+              </ul>
+              <p><strong>Desventajas</strong></p>
+              <ul>
+                <li>Más caro por GB</li>
+                <li>No todas las PCs viejas lo soportan</li>
+                <li>Menos práctico para datos masivos a bajo costo</li>
+              </ul>
+            </div>
+          </details>
+        </article>
+        <article class="card" id="card-ruta-autopista-top">
           <h3>La ruta vs la autopista</h3>
           <div class="table-wrapper">
             <table>
@@ -276,7 +353,7 @@
       </div>
 
       <div class="grid">
-        <article class="card">
+        <article class="card" id="card-comparativa-general-bottom">
           <h3>Comparativa General</h3>
           <details class="faq" open>
             <summary>SATA</summary>
@@ -323,7 +400,49 @@
           <canvas id="latencyCanvas" width="900" height="320" class="canvas"></canvas>
           <div class="legend" id="latencyLegend"></div>
         </article>
+        <article class="card" id="card-ruta-autopista-bottom">
+          <h3>La ruta vs la autopista</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tecnolog��a</th>
+                  <th>Comparaci��n</th>
+                  <th>Velocidad aproximada</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SATA</td>
+                  <td>Ruta de 2 carriles</td>
+                  <td>Hasta 550 MB/s</td>
+                </tr>
+                <tr>
+                  <td>NVMe</td>
+                  <td>Autopista de 8 carriles</td>
+                  <td>Entre 3000 y 7000 MB/s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
+        </article>
       </div>
+
+      <details class="faq">
+        <summary>Video recomendado: Benchmarker6464</summary>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/hE4JV2FYw0U"
+            title="Benchmarker6464 - Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <p class="kv">Fuente: <a href="https://www.youtube.com/@benchmarker6464" target="_blank" rel="noopener noreferrer">@benchmarker6464</a></p>
+      </details>
 
       <details class="faq">
         <summary>¿Por qué es clave para IA y datasets grandes?</summary>
@@ -679,10 +798,10 @@
           <span role="listitem">Walter Emanuel Chavez</span>
           <span role="listitem">Maria Eugenia Rodriguez</span>
           <span role="listitem">Agustin Sánchez Varela</span>
-          <span role="listitem">Ramiro cuando lo sepa lo cargo!</span>
+          <span role="listitem">Ramiro Sadlovsky Pérez</span>
         </div>
       </section>
-      <p>Hecho por el equipo cortito y al pie © 2025</p>
+      <p>Hecho con un poquito de esto y un poquito de aquello! © 2025</p>
     </div>
   </footer>
 
