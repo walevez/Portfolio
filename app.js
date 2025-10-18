@@ -46,6 +46,43 @@ function renderComponentes(){
   `).join("");
 }
 
+/* ===== Corrección de texto (mojibake) en DOM ===== */
+function sanitizeTextIn(container){
+  if(!container) return;
+  const replacements = [
+    [/quǸ/g, 'qué'],
+    [/qu\?/g, 'qué'],
+    [/por quǸ/g, 'por qué'],
+    [/cuǭnto/g, 'cuánto'],
+    [/Coraz��n/g, 'Corazón'],
+    [/Mǭquina/g, 'Máquina'],
+    [/l��gica/g, 'lógica'],
+    [/mini-fǭbrica/g, 'mini-fábrica'],
+    [/Nǧcleos/g, 'Núcleos'],
+    [/3000[^0-9]*7000/g, '3000–7000'],
+    [/opci��n econ��mica/g, 'opción económica'],
+    [/4�-/g, '4×'],
+    [/��GPU o CPU para IA\?/g, '¿GPU o CPU para IA?'],
+    [/��RAM/g, '¿RAM'],
+    [/cuǭnta/g, 'cuánta'],
+    [/32[^0-9]*64/g, '32–64'],
+    [/fr��o/g, 'frío'],
+    [/Hecho por el equipo ��/g, 'Hecho por el equipo ©'],
+    [/ �� /g, ' · '],
+  ];
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  while(walker.nextNode()) nodes.push(walker.currentNode);
+  for(const n of nodes){
+    let txt = n.nodeValue;
+    let changed = false;
+    for(const [pat, rep] of replacements){
+      if(pat.test(txt)){ txt = txt.replace(pat, rep); changed = true; }
+    }
+    if(changed) n.nodeValue = txt;
+  }
+}
+
 /* ===== Gráfico simple de almacenamiento ===== */
 function drawStorageChart(){
   const canvas = document.getElementById("storageCanvas");
@@ -199,4 +236,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
   renderComponentes();
   drawStorageChart();
   fixHeaderHeight(); // asegurar en load
+  // Sanitizar textos visibles en secciones clave
+  sanitizeTextIn(document.querySelector('.hero'));
+  sanitizeTextIn(document.getElementById('corazon'));
+  sanitizeTextIn(document.getElementById('almacenamiento'));
+  sanitizeTextIn(document.getElementById('comparativa'));
+  sanitizeTextIn(document.getElementById('faq'));
+  sanitizeTextIn(document.querySelector('.site-footer'));
+  sanitizeTextIn(document.getElementById('cardsComponentes'));
 });

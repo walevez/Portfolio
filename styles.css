@@ -26,7 +26,7 @@ body{
 /* Header fijo y por encima de todo */
 .site-header{
   position:fixed; top:0; left:0; right:0;
-  z-index:1000; /* alto para estar sobre cualquier cosa */
+  z-index:9999; /* alto para estar sobre cualquier cosa */
   min-height:56px;
   display:flex; align-items:center;
   backdrop-filter:saturate(140%) blur(6px);
@@ -106,11 +106,7 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
   z-index: 1;
 }
 
-.site-header{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 9999;
-}
+
 
 /* Responsive */
 @media (max-width: 880px){
