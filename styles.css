@@ -93,8 +93,19 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 .faq summary{cursor:pointer; font-weight:700}
 
 /* Footer */
-.site-footer{padding:28px 0; border-top:1px solid var(--line); margin-top:40px}
+.site-footer{padding:48px 0; border-top:1px solid var(--line); margin-top:40px}
 .site-footer p{color:var(--muted); text-align:center}
+/* Footer staff */
+.footer-staff{margin-top:12px}
+.footer-staff h4{margin:12px 0 10px; font-size:16px; text-align:center}
+.staff-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap:8px 16px;
+  justify-items:center;
+  color:var(--muted);
+}
+.staff-grid span{font-weight:600}
 
 /* Fondo animado de líneas */
 #bgLines{
