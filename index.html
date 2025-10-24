@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -29,11 +29,11 @@
         <span class="bar"></span>
       </button>
       <nav id="primary-menu" class="nav-links" role="navigation" aria-label="Principal">
-        <a href="#componentes">🧩 Componentes</a>
-        <a href="#almacenamiento-ssd">💾 Almacenamiento</a>
-        <a href="#config-ml">🧰 Configuración ML</a>
-        <a href="#futuro">🔭 Mirando al futuro</a>
-        <a href="#faq">❓ FAQ</a>
+        <a href="#workstation">Workstation</a>
+        <a href="#almacenamiento-ssd">Almacenamiento</a>
+        <a href="#config-ml">Configuración ML</a>
+        <a href="#futuro">Mirando al futuro</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </header>
@@ -66,118 +66,235 @@
     </div>
   </section>
 
-  <!-- Componentes -->
-  <section id="componentes" class="section">
+  <!-- Workstation de Presupuesto Inteligente -->
+  <section id="workstation" class="section ws">
     <div class="container">
-      <h2>Componentes clave</h2>
-      <p class="subtitle">Lo esencial y su rol cuando hablamos de IA y datos.</p>
-      <div id="cardsComponentes" class="grid cards"></div>
+      <div class="ws-hero">
+        <div class="ws-copy">
+          <h2>Workstation de <span class="grad">Presupuesto Inteligente</span></h2>
+          <p class="subtitle">Rendimiento real al mejor costo. Componentes seleccionados y un diseño equilibrado para IA, ciencia de datos y edición.</p>
+          <div class="hero-cta">
+            <a href="#ws-componentes" class="btn primary">Ver componentes</a>
+            <a href="#ws-diagrama" class="btn ghost">Cómo se conecta</a>
+          </div>
+        </div>
+        <div class="ws-hero-art" aria-hidden="true">
+          <div class="glow"></div>
+          <img src="images/pcarma/gabinete.webp" alt="Gabinete de PC" class="hero-part floating a"/>
+          <img src="images/pcarma/mother.webp" alt="Motherboard" class="hero-part floating b"/>
+          <img src="images/pcarma/gpu.webp" alt="Placa de video" class="hero-part floating c"/>
+        </div>
+      </div>
+
+      <!-- Galería de componentes -->
+      <h3 id="ws-componentes" class="ws-subtitle">Componentes clave</h3>
+      <div class="parts-grid">
+        <article class="part-card">
+          <img src="images/pcarma/micro.webp" alt="CPU"/>
+          <h4>CPU</h4>
+          <p>Buen IPC y hilos. Ideal para ETL, compresión y orquestación.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/gpu.webp" alt="GPU"/>
+          <h4>GPU</h4>
+          <p>VRAM manda. Acelera entrenamiento e inferencia pesada.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/ram.webp" alt="RAM"/>
+          <h4>RAM</h4>
+          <p>32–64 GB para datasets medianos y VMs. Escalable a 128 GB.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/ssd.webp" alt="SSD NVMe"/>
+          <h4>NVMe</h4>
+          <p>Gen4 para datasets y cachés. IOPS altas y buen TBW.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/rigido.webp" alt="Disco rígido"/>
+          <h4>HDD</h4>
+          <p>Almacenamiento frío. Backups y datasets históricos.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/mother.webp" alt="Motherboard"/>
+          <h4>Mother</h4>
+          <p>VRM sólido y líneas PCIe suficientes para GPU y NVMe.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/cooler.webp" alt="Cooler"/>
+          <h4>Refrigeración</h4>
+          <p>Consistencia bajo carga. Menos thermal throttling, más rendimiento.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/fuente.webp" alt="Fuente"/>
+          <h4>Fuente</h4>
+          <p>Eficiencia 80+ y margen para picos de GPU. Estabilidad ante todo.</p>
+        </article>
+        <article class="part-card">
+          <img src="images/pcarma/ups.webp" alt="UPS"/>
+          <h4>UPS</h4>
+          <p>Protección de energía y tiempo para guardar trabajos críticos.</p>
+        </article>
+      </div>
+
+      <!-- Diagrama de bloques -->
+      <h3 id="ws-diagrama" class="ws-subtitle">Diagrama de bloques</h3>
+      <div class="block-diagram" role="img" aria-label="Diagrama de conexiones de la workstation">
+        <svg viewBox="0 0 880 420" class="diagram-svg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .node{stroke:var(--line);stroke-width:1.2; shape-rendering:geometricPrecision}
+              .label{fill:var(--fg);font:600 12px system-ui}
+              .sub{fill:var(--muted);font:500 11px system-ui}
+              /* Categorías */
+              .node-processing{fill:#3b82f6; fill-opacity:.18}
+              .node-memory{fill:#22c55e; fill-opacity:.18}
+              .node-storage{fill:#f59e0b; fill-opacity:.18}
+              .node-support{fill:#94a3b8; fill-opacity:.18}
+              /* Buses */
+              .bus{stroke-width:3.5; stroke-linecap:round; shape-rendering:geometricPrecision}
+              .bus-data{stroke:#60a5fa; opacity:.95}
+              .bus-pcie{stroke:#a78bfa; opacity:.95}
+              .bus-sata{stroke:#fbbf24; opacity:.95; stroke-dasharray:8 8}
+              /* Conectores */
+              .link{stroke:rgba(255,255,255,.8); stroke-width:2.25; stroke-linecap:round; shape-rendering:crispEdges}
+              /* Leyenda */
+              .leg-box{fill:rgba(0,0,0,.18); stroke:var(--line)}
+            </style>
+          </defs>
+
+          <!-- Motherboard centrada -->
+          <rect class="node node-support" x="300" y="150" width="280" height="60" rx="10"/>
+          <text class="label" x="440" y="175" text-anchor="middle">Motherboard</text>
+          <text class="sub" x="440" y="193" text-anchor="middle">VRM / PCIe-M.2 / SATA / Control</text>
+
+          <!-- Top: CPU / RAM / GPU -->
+          <rect class="node node-processing" x="370" y="60" width="110" height="50" rx="10"/>
+          <text class="label" x="425" y="90" text-anchor="middle">CPU</text>
+
+          <rect class="node node-processing" x="510" y="60" width="120" height="50" rx="10"/>
+          <text class="label" x="570" y="90" text-anchor="middle">GPU</text>
+
+          <rect class="node node-memory" x="255" y="60" width="110" height="50" rx="10"/>
+          <text class="label" x="310" y="90" text-anchor="middle">RAM</text>
+
+          <!-- Izquierda-baja: Almacenamiento -->
+          <rect class="node node-storage" x="140" y="260" width="130" height="50" rx="10"/>
+          <text class="label" x="205" y="290" text-anchor="middle">NVMe</text>
+
+          <rect class="node node-storage" x="140" y="330" width="160" height="50" rx="10"/>
+          <text class="label" x="220" y="360" text-anchor="middle">SATA SSD/HDD</text>
+
+          <!-- Derecha-baja: Energía y soporte -->
+          <rect class="node node-support" x="560" y="260" width="120" height="50" rx="10"/>
+          <text class="label" x="620" y="290" text-anchor="middle">Fuente</text>
+
+          <rect class="node node-support" x="710" y="260" width="120" height="50" rx="10"/>
+          <text class="label" x="770" y="290" text-anchor="middle">UPS</text>
+
+          <rect class="node node-support" x="730" y="110" width="110" height="140" rx="14"/>
+          <text class="label" x="785" y="185" text-anchor="middle">Gabinete</text>
+
+          <!-- Buses (líneas horizontales ortogonales) -->
+          <line class="bus bus-data" x1="300" y1="150" x2="580" y2="150"/>
+          <text class="sub" x="590" y="142">Bus de datos</text>
+
+          <line class="bus bus-pcie" x1="320" y1="215" x2="560" y2="215"/>
+          <text class="sub" x="570" y="207">PCIe / M.2</text>
+
+          <line class="bus bus-sata" x1="320" y1="235" x2="500" y2="235"/>
+          <text class="sub" x="510" y="227">SATA</text>
+
+          <!-- Conexiones a buses y motherboard (ortogonales) -->
+          <!-- CPU → Bus de datos → Motherboard -->
+          <line class="link" x1="425" y1="110" x2="425" y2="150"/>
+          <!-- RAM → Bus de datos -->
+          <line class="link" x1="310" y1="110" x2="310" y2="150"/>
+          <!-- GPU → Bus de datos -->
+          <line class="link" x1="570" y1="110" x2="570" y2="150"/>
+
+          <!-- NVMe → PCIe/M.2 -->
+          <line class="link" x1="205" y1="260" x2="205" y2="215"/>
+          <line class="link" x1="205" y1="215" x2="320" y2="215"/>
+
+          <!-- SATA → Bus SATA (codo) -->
+          <line class="link" x1="220" y1="330" x2="290" y2="330"/>
+          <line class="link" x1="290" y1="330" x2="290" y2="235"/>
+          <line class="link" x1="290" y1="235" x2="320" y2="235"/>
+
+          <!-- Motherboard → Fuente → UPS (energía) -->
+          <line class="link" x1="580" y1="210" x2="580" y2="260"/>
+          <line class="link" x1="580" y1="260" x2="560" y2="260"/>
+          <line class="link" x1="680" y1="285" x2="710" y2="285"/>
+          <!-- Nota: sin conexiones al Gabinete -->
+
+          <!-- Leyenda -->
+          <g>
+            <rect class="leg-box" x="24" y="20" width="210" height="86" rx="10"/>
+            <circle cx="40" cy="40" r="6" fill="#3b82f6"/>
+            <text class="sub" x="55" y="44">Procesamiento (CPU, GPU)</text>
+            <circle cx="40" cy="62" r="6" fill="#22c55e"/>
+            <text class="sub" x="55" y="66">Memoria (RAM)</text>
+            <circle cx="40" cy="84" r="6" fill="#f59e0b"/>
+            <text class="sub" x="55" y="88">Almacenamiento (NVMe, SATA)</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Infografía de capacidades -->
+      <h3 class="ws-subtitle">Capacidades en una mirada</h3>
+      <div class="infogrid">
+        <div class="info-item">
+          <svg viewBox="0 0 48 48" class="icon"><circle cx="24" cy="24" r="22" class="ring"/><path d="M14 26l6 6 14-14" class="tick"/></svg>
+          <div>
+            <h4>Entrenamiento local</h4>
+            <p>Modelos pequeños/medianos en VRAM dedicada. Fine-tuning eficiente.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <svg viewBox="0 0 48 48" class="icon"><circle cx="24" cy="24" r="22" class="ring"/><path d="M12 24h24M24 12v24" class="tick"/></svg>
+          <div>
+            <h4>Escalable</h4>
+            <p>Espacio para más NVMe y GPU. Fuente con margen.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <svg viewBox="0 0 48 48" class="icon"><circle cx="24" cy="24" r="22" class="ring"/><path d="M14 18h20M14 24h16M14 30h12" class="tick"/></svg>
+          <div>
+            <h4>Flujo de datos</h4>
+            <p>NVMe Gen4 para datasets y caching. HDD para archivo.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <svg viewBox="0 0 48 48" class="icon"><circle cx="24" cy="24" r="22" class="ring"/><path d="M16 28c4 6 12 6 16 0" class="tick"/></svg>
+          <div>
+            <h4>Estable y silenciosa</h4>
+            <p>Refrigeración adecuada y UPS para cortes. Menos estrés.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ws-cta">
+        <a href="#faq" class="btn primary">Quiero construirla</a>
+        <span class="micro">Tip: empieza con lo esencial y expande según tu carga.</span>
+      </div>
     </div>
   </section>
 
   <!-- El Corazón Inteligente de la Máquina -->
-  <section id="corazon-old" class="section" style="display:none">
-    <div class="container">
-      <h2>El Corazón Inteligente de la Máquina</h2>
-      <p class="subtitle">CPU, NPU e iGPU trabajando en equipo.</p>
-
-      <div class="grid">
-        <article class="card">
-          <h3>CPU: el cerebro general</h3>
-          <p>Ejecuta el sistema, apps y lógica secuencial.</p>
-        </article>
-        <article class="card">
-          <h3>Comparativa General</h3>
-          <details class="faq" open>
-            <summary>SATA</summary>
-            <div>
-              <p><strong>Ventajas</strong></p>
-              <ul>
-                <li>Compatibilidad alt��sima (PCs viejas y nuevas)</li>
-                <li>Mǭs barato por GB</li>
-                <li>Ideal para archivos, backups o datos poco usados</li>
-              </ul>
-              <p><strong>Desventajas</strong></p>
-              <ul>
-                <li>Mǭximo ~600 MB/s (tope del bus)</li>
-                <li>Queda corto para SSD modernos</li>
-                <li>No sirve bien para cargas intensivas o baja latencia</li>
-              </ul>
-            </div>
-          </details>
-          <details class="faq">
-            <summary>NVMe</summary>
-            <div>
-              <p><strong>Ventajas</strong></p>
-              <ul>
-                <li>Usa PCIe (mucho mǭs rǭpido)</li>
-                <li>Latencia muy baja</li>
-                <li>Formatos M.2 compactos</li>
-                <li>Ideal para IA, videojuegos, edici��n, bases de datos, render</li>
-              </ul>
-              <p><strong>Desventajas</strong></p>
-              <ul>
-                <li>Mǭs caro por GB</li>
-                <li>No todas las PCs viejas lo soportan</li>
-                <li>Menos prǭctico para datos masivos a bajo costo</li>
-              </ul>
-            </div>
-          </details>
-        </article>
-        <article class="card">
-          <h3>NPU: mini-fábrica de inferencia</h3>
-          <p>Especializada en multiplicaciones de matrices con bajo consumo.</p>
-        </article>
-      </div>
-
-      <div class="table-wrapper" style="margin-top:16px">
-        <table class="corazon-table">
-          <thead>
-            <tr>
-              <th>Plataforma</th>
-              <th>Arquitectura CPU</th>
-              <th>Núcleos / Hilos</th>
-              <th>NPU (TOPS aprox.)</th>
-              <th>iGPU</th>
-              <th>Notas</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Ryzen AI 300 (Strix Point)</strong></td>
-              <td>Zen 5 + Zen 5c</td>
-              <td>Hasta 12c / 24t</td>
-              <td>~50</td>
-              <td>RDNA 3.5</td>
-              <td>Balance CPU/NPU/GPU</td>
-            </tr>
-            <tr>
-              <td><strong>Core Ultra 2 (Lunar Lake)</strong></td>
-              <td>P-cores + E-cores</td>
-              <td>Hasta 8c / 8t</td>
-              <td>~48</td>
-              <td>Xe2-LPG</td>
-              <td>Memoria LPDDR5X</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
+  
 
   <!-- Corazón IA (nuevo) -->
   <section id="corazon-ia" class="section">
     <div class="container">
-      <h2>El Corazón Inteligente de la Máquina</h2>
+      <h2>CPU, NPU y GPU: trabajando en equipo</h2>
       <p class="subtitle">CPU, NPU e iGPU: roles complementarios</p>
 
       <div class="grid cards">
         <article class="card">
           <h3>Introducción</h3>
           <ul>
-            <li><strong>CPU</strong>: el “cerebro general”. Ejecuta sistema, apps y lógica secuencial. Brilla en baja latencia por hilo y control.</li>
-            <li><strong>NPU</strong>: una “mini‑fábrica” para inferencia de IA (matmul y afines) con muy bajo consumo. Ideal para efectos/IA en tiempo real y tareas en segundo plano.</li>
+                        <li><strong>CPU</strong>: el cerebro general. Ejecuta sistema, apps y lógica secuencial. Brilla en baja latencia por hilo y control.</li>
+                        <li><strong>NPU</strong>: una mini‑fábrica para inferencia de IA (matmul y afines) con muy bajo consumo. Ideal para efectos/IA en tiempo real y tareas en segundo plano.</li>
           </ul>
         </article>
       </div>
@@ -185,25 +302,25 @@
       <h3 style="margin-top:16px">Procesadores (CPU)</h3>
       <div class="grid cards">
         <article class="card">
-          <h4>AMD Ryzen AI 300 Series “Strix Point”</h4>
+          <h4>AMD Ryzen AI 300 Series –Strix Point–</h4>
           <div class="canvas" style="height:180px; display:flex; align-items:center; justify-content:center">
           <img src="/images/amd ryzen ai.png" alt="amd_ryzen_ai">
           </div>
           <p>La respuesta de AMD para notebooks con IA integrada (2024/25), mezclando núcleos Zen y una NPU XDNA 2.</p>
           <p><strong>CPU (mixta)</strong></p>
           <ul>
-            <li>Zen 5: núcleos “grandes” de alto rendimiento por hilo.</li>
-            <li>Zen 5c: núcleos “compactos” de alta densidad/eficiencia (misma ISA).</li>
-            <li>Cache: L2 total 12 MB, L3 total 24 MB (16 MB Zen 5 + 8 MB Zen 5c).</li>
+            <li>Zen 5: núcleos grandes de alto rendimiento por hilo.</li>
+            <li>Zen 5c: núcleos compactos de alta densidad/eficiencia (misma ISA).</li>
+            <li>Caché: L2 total 12 MB, L3 total 24 MB (16 MB Zen 5 + 8 MB Zen 5c).</li>
             <li>Ejemplo tope: Ryzen AI 9 HX 370 = 12 núcleos / 24 hilos (4 Zen 5 + 8 Zen 5c).</li>
           </ul>
-          <p><strong>NPU (XDNA 2)</strong>: ~50 TOPS y soporte BF16; matriz de “tiles” con SRAM local y DMAs para mover datos con muy poco consumo.</p>
+          <p><strong>NPU (XDNA 2)</strong>: ~50 TOPS y soporte BF16; matriz de tiles con SRAM local y DMAs para mover datos con muy poco consumo.</p>
           <p><strong>Gráficos</strong>: iGPU RDNA 3.5 (Radeon 800M), útil para IA por GPU y juegos ligeros.</p>
-          <p><strong>Por qué importa para IA</strong>: más hilos de CPU ayudan en pre/post‑proceso (tokenizar, compresión, I/O); la NPU toma el “matmul” repetitivo; la iGPU acelera cargas grandes optimizadas para GPU.</p>
+          <p><strong>Por qué importa para IA</strong>: más hilos de CPU ayudan en pre y posprocesamiento (tokenizar, compresión, I/O); la NPU toma el matmul repetitivo; la iGPU acelera cargas grandes optimizadas para GPU.</p>
         </article>
 
         <article class="card">
-          <h4>Intel Core Ultra “Lunar Lake” (Series 2)</h4>
+          <h4>Intel Core Ultra –Lunar Lake– (Series 2)</h4>
           <div class="canvas" style="height:180px; display:flex; align-items:center; justify-content:center">
             <img src="/images/intel npu ia.png" alt="">
           </div>
@@ -214,7 +331,7 @@
             <li>E‑cores (Efficient): ahorro de energía y paralelismo con buen rendimiento por watt.</li>
             <li>Thread Director reparte trabajo entre P/E automáticamente.</li>
           </ul>
-          <p><strong>Ejemplo tope</strong>: Core Ultra 9 288V: 8 núcleos/8 hilos → 4 P‑cores (Lion Cove) + 4 E‑cores (Skymont).</p>
+          <p><strong>Ejemplo tope</strong>: Core Ultra 9 288V: 8 núcleos/8 hilos  — 4 P‑cores (Lion Cove) + 4 E‑cores (Skymont).</p>
           <p><strong>NPU</strong>: hasta ~48 TOPS para inferencia local (traducción en vivo, efectos de cámara, subtítulos) sin agotar batería.</p>
           <p><strong>Gráficos</strong>: iGPU Xe2‑LPG (Battlemage) para 3D e IA por GPU cuando conviene.</p>
           <p><strong>Memoria</strong>: LPDDR5X soldada en el paquete para menor latencia y consumo (beneficia CPU, iGPU y NPU).</p>
@@ -261,40 +378,72 @@
             <li><strong>Novedades</strong>: FP4 en Tensor Cores (hasta 2× vs FP8), DLSS 4 MFG, SM optimizados para neural shaders.</li>
           </ul>
           <p>La RTX 5090 es tope de gama: paralelismo masivo con 32 GB GDDR7 y hardware dedicado para IA y ray tracing. Permite modelos grandes, lotes altos y edición/juegos a resoluciones muy altas.</p>
-          <p>El “AI Management Processor (AMP)” orquesta tareas dentro de la GPU: prioriza la respuesta del modelo y ordena el render para frames estables. Sin AMP, IA y gráficos compiten por recursos y puede haber picos de latencia.</p>
+          <p>El "AI Management Processor (AMP)" orquesta tareas dentro de la GPU: prioriza la respuesta del modelo y ordena el render para fotogramas estables. Sin AMP, IA y gráficos compiten por recursos y puede haber picos de latencia.</p>
           <p>El SM Blackwell integra Tensor Cores de 5ª gen preparados para neural shaders (FP4/FP8/FP16) con gran rendimiento por vatio en IA.</p>
-          <p>Resumen: Tensor Cores para redes, RT Cores para geometría, AMP para coordinar, y GDDR7 ultrarrápida alimentando todo: más calidad + más FPS con IA rápida y frames estables.</p>
+          <p>Resumen: Tensor Cores para redes, RT Cores para geometría, AMP para coordinar, y GDDR7 ultrarrápida alimentando todo: más calidad + más FPS con IA rápida y fotogramas estables.</p>
+        </article>
+      </div>
+
+      <!-- Guía rápida: ¿CPU, GPU o NPU? -->
+      <div class="grid cards">
+        <article class="card full-row">
+          <h3>¿CPU, GPU o NPU? Guía rápida</h3>
+          <div class="table-wrapper">
+            <table class="equipos-table">
+              <thead>
+                <tr>
+                  <th>Tarea / Situación</th>
+                  <th>¿Qué conviene usar?</th>
+                  <th>¿Por qué?</th>
+                  <th>Ejemplos concretos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Entrenar modelos (aprender desde datos)</td>
+                  <td>GPU</td>
+                  <td>Megafábrica con miles de núcleos trabajando en paralelo y VRAM grande/rápida.</td>
+                  <td>ajuste fino de un modelo de imágenes o un LLM chico; entrenar Stable Diffusion.</td>
+                </tr>
+                <tr>
+                  <td>Generar cosas “pesadas” (muchas imágenes, alta resolución, lotes)</td>
+                  <td>GPU</td>
+                  <td>Fuerza bruta y gran ancho de banda.</td>
+                  <td>ComfyUI con lotes altos, video con IA, upscaling 4K.</td>
+                </tr>
+                <tr>
+                  <td>Tiempo real en notebook (filtros de cámara, subtítulos, copilotos)</td>
+                  <td>NPU</td>
+                  <td>Línea de montaje muy eficiente: respuesta rápida con muy poca batería.</td>
+                  <td>Efectos de video/voz, transcripción en vivo, asistentes locales en Windows.</td>
+                </tr>
+                <tr>
+                  <td>Tareas del día a día con IA ligera</td>
+                  <td>CPU + NPU</td>
+                  <td>La CPU coordina y la NPU acelera tramos; fluidez sin calentar la máquina.</td>
+                  <td>Ofimática + IA, resumen de texto/voz, pequeñas inferencias.</td>
+                </tr>
+                <tr>
+                  <td>Juegos y creatividad (render y edición)</td>
+                  <td>GPU</td>
+                  <td>Gráficos y modelos visuales cargan sobre la GPU.</td>
+                  <td>Edición con efectos IA, render 3D, DLSS.</td>
+                </tr>
+                <tr>
+                  <td>Ahorro de batería</td>
+                  <td>NPU</td>
+                  <td>Más con menos watts.</td>
+                  <td>Reuniones largas con filtros, dictado continuo.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </article>
       </div>
 
     </div>
   </section>
-
-  <!-- Almacenamiento -->
-  <section id="almacenamiento-old" class="section" style="display:none">
-    <div class="container">
-      <h2>Almacenamiento: SATA vs NVMe</h2>
-      <p class="subtitle">Velocidad y latencia importan.</p>
-
-      <div class="grid">
-        <article class="card">
-          <h3>Resumen</h3>
-          <ul class="kv">
-            <li><strong>SATA:</strong> ~550 MB/s, barato y compatible.</li>
-            <li><strong>NVMe:</strong> 3000–7000 MB/s (Gen4), &gt;10.000 (Gen5).</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Velocidad comparada</h3>
-          <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
-          <div class="legend" id="storageLegend"></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- NUEVO: Almacenamiento SATA vs NVMe -->
+\n  <!-- NUEVO: Almacenamiento SATA vs NVMe -->
   <section id="almacenamiento-ssd" class="section">
     <div class="container">
       <h2>La Batalla de los SSD: SATA vs NVMe</h2>
@@ -308,8 +457,8 @@
             Esto habilita mayor velocidad, fiabilidad y operación silenciosa.
           </p>
           <ul class="kv">
-            <li>▪️ <strong>SATA</strong> → Tecnología más antigua, confiable y económica.</li>
-            <li>▪️ <strong>NVMe</strong> → Nueva generación en PCIe, diseñada para velocidad.</li>
+            <li>• <strong>SATA</strong> — Tecnología más antigua, confiable y económica.</li>
+            <li>• <strong>NVMe</strong> — Nueva generación en PCIe, diseñada para velocidad.</li>
           </ul>
         </article>
         <!-- Comparativa General: dos secciones paralelas con espacio para imágenes -->
@@ -373,7 +522,7 @@
           <p class="kv">Para archivos grandes o IA, NVMe es como pasar de una moto en calle lenta a un F1 en pista libre.</p>
         </article>
         <article class="card" id="card-graficos">
-          <h3>Gráficos</h3>
+          <h3>Gráficos para comparar</h3>
           <p class="kv">Velocidad secuencial (MB/s)</p>
           <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
           <div class="legend" id="storageLegend"></div>
@@ -388,7 +537,7 @@
         <div class="video-embed">
           <iframe
             src="https://www.youtube.com/embed/hE4JV2FYw0U"
-            title="Benchmarker64 - Video"
+            title="Benchmarker64 – Video"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
@@ -403,8 +552,8 @@
         <div>
           <p>En escenarios de entrenamiento con millones de muestras:</p>
           <ul>
-            <li>Con SATA → los datos entran de a poco, como autos en ruta vieja.</li>
-            <li>Con NVMe → fluyen a toda velocidad, como autopista con muchos carriles.</li>
+            <li>Con SATA — los datos entran de a poco, como autos en ruta vieja.</li>
+            <li>Con NVMe — fluyen a toda velocidad, como autopista con muchos carriles.</li>
           </ul>
           <ul>
             <li>⚡ Menor tiempo de carga</li>
@@ -429,7 +578,7 @@
             <h4>NVMe</h4>
             <ul>
               <li>M.2 (2280 estándar)</li>
-              <li>U.2 (datacenters)</li>
+              <li>U.2 (centros de datos)</li>
               <li>PCIe (tarjeta) rendimiento extremo</li>
             </ul>
           </article>
@@ -440,7 +589,7 @@
         <summary>¿Cuándo conviene cada uno?</summary>
         <div class="grid cards">
           <article class="card">
-            <h4>SATA si…</h4>
+            <h4>SATA sí...</h4>
             <ul>
               <li>Querés ahorrar dinero</li>
               <li>Guardás archivos, backups o cosas poco usadas</li>
@@ -448,7 +597,7 @@
             </ul>
           </article>
           <article class="card">
-            <h4>NVMe si…</h4>
+            <h4>NVMe sí...</h4>
             <ul>
               <li>IA, bases de datos, edición, render o gaming</li>
               <li>Necesitás velocidad para cargar/transferir</li>
@@ -474,7 +623,7 @@
               <tr><td>Velocidad máx. aprox.</td><td>Hasta 550 MB/s</td><td>3.000–7.000 MB/s (según PCIe)</td></tr>
               <tr><td>Latencia</td><td>Más alta</td><td>Muy baja</td></tr>
               <tr><td>Colas de comando</td><td>1 cola · 32 comandos</td><td>Hasta 65.535 colas · 65.536 comandos</td></tr>
-              <tr><td>Formato habitual</td><td>2.5” / M.2 SATA</td><td>M.2 NVMe / U.2 / PCIe</td></tr>
+              <tr><td>Formato habitual</td><td>2.5" / M.2 SATA</td><td>M.2 NVMe / U.2 / PCIe</td></tr>
               <tr><td>Compatibilidad</td><td>Altísima</td><td>PCs modernas con PCIe/M.2</td></tr>
               <tr><td>Costo por GB</td><td>Más económico</td><td>Más caro</td></tr>
               <tr><td>Uso ideal</td><td>Archivos, backups, uso general</td><td>Gaming, IA, bases de datos, cargas pesadas</td></tr>
@@ -539,7 +688,7 @@
         <table class="equipos-table">
           <thead>
             <tr>
-              <th>🔧 Componente</th>
+              <th>Componente</th>
               <th>Workstation Extrema</th>
               <th>Equipo de Entrada (~USD 800)</th>
             </tr>
@@ -552,7 +701,7 @@
             </tr>
             <tr>
               <td><strong>GPU</strong></td>
-              <td>4× RTX 4090 24GB</td>
+              <td>4- RTX 4090 24GB</td>
               <td>RTX 4060 Ti 16GB</td>
             </tr>
             <tr>
@@ -592,26 +741,26 @@
 
       <div class="grid">
         <article class="card">
-          <h3>🏆 "Money is No Object" — La Bestia Absoluta</h3>
+          <h3>"Money is No Object" – La Bestia Absoluta</h3>
           <p class="kv">Especificaciones Premium · $18,000–22,000 USD</p>
           <ul>
-            <li><strong>CPU:</strong> AMD Ryzen Threadripper 7980X (64c/128t) — Preprocesamiento paralelo masivo y múltiples experimentos en simultáneo.</li>
-            <li><strong>GPU:</strong> 4× NVIDIA RTX 4090 24GB — 96GB VRAM total; clave para modelos grandes. Ada Lovelace con FP8 y transform engines.</li>
-            <li><strong>RAM:</strong> 512GB DDR5 4800 (8×64GB) — Datasets masivos en memoria; buffers para 70B+ parámetros.</li>
-            <li><strong>Almacenamiento:</strong> 4TB NVMe Gen5 + 16TB SSD SATA — Gen5 para checkpoints; SATA para datasets sin comprimir.</li>
-            <li><strong>Placa Base:</strong> ASUS Pro WS TRX50-SAGE WIFI — 4 GPUs full-size sin throttling, 8 slots DDR5, múltiples M.2 con disipación activa.</li>
+            <li><strong>CPU:</strong> AMD Ryzen Threadripper 7980X (64c/128t) – Preprocesamiento paralelo masivo y múltiples experimentos en simultáneo.</li>
+            <li><strong>GPU:</strong> 4- NVIDIA RTX 4090 24GB – 96GB VRAM total; clave para modelos grandes. Ada Lovelace con FP8 y transform engines.</li>
+            <li><strong>RAM:</strong> 512GB DDR5 4800 (8×64GB) – Datasets masivos en memoria; buffers para 70B+ parámetros.</li>
+            <li><strong>Almacenamiento:</strong> 4TB NVMe Gen5 + 16TB SSD SATA – Gen5 para checkpoints; SATA para datasets sin comprimir.</li>
+            <li><strong>Placa Base:</strong> ASUS Pro WS TRX50-SAGE WIFI – 4 GPUs full-size sin throttling, 8 slots DDR5, múltiples M.2 con disipación activa.</li>
           </ul>
         </article>
 
         <article class="card">
-          <h3>💡 "El Punto Dulce" — Hasta $800 USD</h3>
+          <h3>El Punto Dulce – Hasta $800 USD</h3>
           <p class="kv">Especificaciones Económicas · ~$800 USD</p>
           <ul>
-            <li><strong>GPU:</strong> NVIDIA RTX 4060 Ti 16GB (~$450) — 16GB VRAM para fine-tuning 7B–13B con eficiencia Ada.</li>
-            <li><strong>CPU:</strong> AMD Ryzen 5 5600 (~$130) — 6c suficientes para ETL; PCIe 4.0; 65W TDP.</li>
-            <li><strong>RAM:</strong> 32GB DDR4 3200 (2×16GB) (~$65) — Balance costo/capacidad; DDR4 más accesible.</li>
-            <li><strong>Almacenamiento:</strong> 1TB NVMe Gen4 (~$80) — 5GB/s+ para carga rápida de modelos y proyectos.</li>
-            <li><strong>Placa Base:</strong> ASRock B550M-HDV (~$75) — PCIe 4.0, 4 slots RAM, conectividad confiable.</li>
+            <li><strong>GPU:</strong> NVIDIA RTX 4060 Ti 16GB (~$450) – 16GB VRAM para ajuste fino 7B–13B con eficiencia Ada.</li>
+            <li><strong>CPU:</strong> AMD Ryzen 5 5600 (~$130) – 6c suficientes para ETL; PCIe 4.0; 65W TDP.</li>
+            <li><strong>RAM:</strong> 32GB DDR4 3200 (2×16GB) (~$65) – Balance costo/capacidad; DDR4 más accesible.</li>
+            <li><strong>Almacenamiento:</strong> 1TB NVMe Gen4 (~$80) – 5GB/s+ para carga rápida de modelos y proyectos.</li>
+            <li><strong>Placa Base:</strong> ASRock B550M-HDV (~$75) – PCIe 4.0, 4 slots RAM, conectividad confiable.</li>
           </ul>
         </article>
       </div>
@@ -620,14 +769,14 @@
         <table>
           <thead>
             <tr>
-              <th>🔧 Componente</th>
+              <th>Componente</th>
               <th>Premium (Money is No Object)</th>
               <th>Económico (El Punto Dulce)</th>
             </tr>
           </thead>
           <tbody>
             <tr><td><strong>CPU</strong></td><td>Threadripper 7980X (64c/128t)</td><td>Ryzen 5 5600 (6c/12t)</td></tr>
-            <tr><td><strong>GPU</strong></td><td>4× RTX 4090 24GB (96GB VRAM)</td><td>RTX 4060 Ti 16GB</td></tr>
+            <tr><td><strong>GPU</strong></td><td>4- RTX 4090 24GB (96GB VRAM)</td><td>RTX 4060 Ti 16GB</td></tr>
             <tr><td><strong>RAM</strong></td><td>512GB DDR5 4800 (8×64GB)</td><td>32GB DDR4 3200 (2×16GB)</td></tr>
             <tr><td><strong>Almacenamiento</strong></td><td>4TB NVMe Gen5 + 16TB SSD SATA</td><td>1TB NVMe Gen4</td></tr>
             <tr><td><strong>Placa Base</strong></td><td>ASUS Pro WS TRX50-SAGE WIFI</td><td>ASRock B550M-HDV</td></tr>
@@ -637,7 +786,7 @@
       </div>
 
       <details class="faq" open>
-        <summary>🔍 Análisis de compromisos (presupuesto ajustado)</summary>
+        <summary>Análisis de compromisos (presupuesto ajustado)</summary>
         <div class="grid cards">
           <article class="card">
             <h4>Donde ahorramos inteligentemente</h4>
@@ -651,35 +800,35 @@
           <article class="card">
             <h4>Donde NO comprometimos</h4>
             <ul>
-              <li>✅ VRAM suficiente (16GB mínimo)</li>
-              <li>✅ Arquitectura GPU moderna (Ada Lovelace)</li>
-              <li>✅ SSD NVMe rápido</li>
-              <li>✅ 32GB RAM mínima</li>
+              <li>o. VRAM suficiente (16GB mínimo)</li>
+              <li>o. Arquitectura GPU moderna (Ada Lovelace)</li>
+              <li>o. SSD NVMe rápido</li>
+              <li>o. 32GB RAM mínima</li>
             </ul>
           </article>
         </div>
       </details>
 
       <details class="faq">
-        <summary>📚 Bibliografía y fuentes</summary>
+        <summary>Bibliografía y fuentes</summary>
         <div>
           <ul>
-            <li><a class="source-link" href="https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/" target="_blank" rel="noopener">Tim Dettmers — Which GPU for deep learning?</a></li>
-            <li><a class="source-link" href="https://www.pugetsystems.com/solutions/machine-learning-workstations/" target="_blank" rel="noopener">Puget Systems — ML Workstation Recommendations</a></li>
-            <li><a class="source-link" href="https://lambdalabs.com/gpu-benchmarks" target="_blank" rel="noopener">Lambda Labs — GPU Benchmarks</a></li>
-            <li><a class="source-link" href="https://huggingface.co/docs/transformers/perf_train_gpu_one" target="_blank" rel="noopener">Hugging Face — Transformers perf train on one GPU</a></li>
-            <li><a class="source-link" href="https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html" target="_blank" rel="noopener">PyTorch — GPU Performance Tuning Guide</a></li>
-            <li><a class="source-link" href="https://www.techspot.com/gpu-hierarchy/" target="_blank" rel="noopener">TechSpot — GPU Hierarchy</a></li>
-            <li><a class="source-link" href="https://www.userbenchmark.com/" target="_blank" rel="noopener">UserBenchmark — Real World Performance</a></li>
-            <li><a class="source-link" href="https://reddit.com/r/MachineLearning" target="_blank" rel="noopener">Reddit — r/MachineLearning</a></li>
+            <li><a class="source-link" href="https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/" target="_blank" rel="noopener">Tim Dettmers – Which GPU for deep learning?</a></li>
+            <li><a class="source-link" href="https://www.pugetsystems.com/solutions/machine-learning-workstations/" target="_blank" rel="noopener">Puget Systems – ML Workstation Recommendations</a></li>
+            <li><a class="source-link" href="https://lambdalabs.com/gpu-benchmarks" target="_blank" rel="noopener">Lambda Labs – GPU Benchmarks</a></li>
+            <li><a class="source-link" href="https://huggingface.co/docs/transformers/perf_train_gpu_one" target="_blank" rel="noopener">Hugging Face – Transformers perf train on one GPU</a></li>
+            <li><a class="source-link" href="https://pytorch.org/tutorials/recipes/recipes/tuning_guide.html" target="_blank" rel="noopener">PyTorch – GPU Performance Tuning Guide</a></li>
+            <li><a class="source-link" href="https://www.techspot.com/gpu-hierarchy/" target="_blank" rel="noopener">TechSpot – GPU Hierarchy</a></li>
+            <li><a class="source-link" href="https://www.userbenchmark.com/" target="_blank" rel="noopener">UserBenchmark – Real World Performance</a></li>
+            <li><a class="source-link" href="https://reddit.com/r/MachineLearning" target="_blank" rel="noopener">Reddit – r/MachineLearning</a></li>
           </ul>
         </div>
       </details>
 
       <details class="faq">
-        <summary>🎯 Conclusión profesional</summary>
+        <summary>Conclusión profesional</summary>
         <div>
-          <p>La configuración <spam>premium</spam> está optimizada para investigación y producción a escala enterprise, mientras que la configuración económica representa el mínimo viable profesional para un científico de datos serio. Ambas configuraciones priorizan la VRAM sobre todos los demás componentes, reconociendo que en el ML moderno, la memoria de GPU es el recurso más escaso y valioso.</p>
+          <p>La configuración <span>premium</span> está optimizada para investigación y producción a escala enterprise, mientras que la configuración económica representa el mínimo viable profesional para un científico de datos serio. Ambas configuraciones priorizan la VRAM sobre todos los demás componentes, reconociendo que en el ML moderno, la memoria de GPU es el recurso más escaso y valioso.</p>
           <p>Ambas priorizan la VRAM por encima del resto: en ML moderno, la memoria de GPU es el recurso más escaso y valioso. Recomendación: comenzar con la económica y escalar a cloud para experimentos que excedan su capacidad local.</p>
         </div>
       </details>
@@ -737,7 +886,7 @@
         <p>Entrenar = GPU. Inferencia liviana/ETL = CPU+RAM.</p>
       </details>
       <details class="faq">
-        <summary>¿RAM “cuánta”?</summary>
+        <summary>¿RAM — cuánta?</summary>
         <p>32–64 GB para empezar; 128 GB si vas fuerte con DB o VMs.</p>
       </details>
     </div>
@@ -760,9 +909,17 @@
   </footer>
 
   <script src="app.js" defer></script>
-  <script language="JavaScript" type="text/javascript">TrustLogo("https://micuenta.donweb.com/img/sectigo_positive_sm.png", "CL1", "none");</script><a href="https://donweb.com/es-ar/certificados-ssl" id="comodoTL" title="Certificados SSL Argentina">Certificados SSL Argentina</a>
+  <script>
+    (function(){
+      function hideLoader(){
+        var ld = document.getElementById('app-loader');
+        if(ld){ ld.classList.add('hidden'); ld.setAttribute('aria-busy','false'); }
+      }
+      document.addEventListener('DOMContentLoaded', hideLoader);
+      window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 3000); // Failsafe por si algún script falla
+    })();
+  </script>
+  <script language="JavaScript" type="text/javascript">TrustLogo(https://micuenta.donweb.com/img/sectigo_positive_sm.png, CL1, none);</script><a href="https://donweb.com/es-ar/certificados-ssl" id="comodoTL" title="Certificados SSL Argentina">Certificados SSL Argentina</a>
 </body>
 </html>
-
-
-

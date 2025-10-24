@@ -1,4 +1,4 @@
-:root{
+﻿:root{
   --bg:#0f1115; --fg:#e8eaf0; --muted:#aab2c0;
   --card:#151824; --card2:#10131c; --line:#23283a;
   --acc1:#6ee7f8; --acc2:#a78bfa; --acc3:#22d3ee;
@@ -18,8 +18,9 @@ body{
 /* Container & layout */
 .container{width:min(1100px,92vw); margin:0 auto}
 .section{
-  padding:64px 0;
-  scroll-margin-top: calc(var(--header-h) + 12px);
+  padding:48px 0;
+  /* Offset mayor para que el ancla quede visible bajo el header y el scrollspy lo detecte */
+  scroll-margin-top: calc(var(--header-h) + 36px);
 }
 .subtitle{color:var(--muted); margin-top:-6px}
 
@@ -41,15 +42,9 @@ body{
 .nav-links a{color:var(--muted); text-decoration:none; font-weight:600}
 .nav-links a:hover{color:var(--fg)}
 /* Active section highlight */
-.nav-links a.active{
-  color: var(--fg);
-  position: relative;
-}
-.nav-links a.active::after{
-  content: "";
-  position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
-  background: linear-gradient(90deg, var(--acc1), var(--acc2));
-}
+/* Desactivar efecto de resaltado activo en menú */
+/* .nav-links a.active { }
+   .nav-links a.active::after { } */
 
 /* Toggle (hamburguesa) */
 .nav-toggle{display:none; background:transparent; border:0; width:40px; height:40px; padding:0; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:5px}
@@ -105,6 +100,56 @@ body{
 .btn.ghost:active{ transform: translateY(1px); filter: brightness(1.02); }
 .hero-svg{width:100%; height:auto; filter:drop-shadow(0 10px 30px rgba(0,0,0,.4))}
 
+/* Workstation (main section) */
+.ws-hero{display:grid; grid-template-columns:1.1fr 1fr; gap:24px; align-items:center; margin-bottom:20px}
+.ws-copy h2{font-size:clamp(26px,3.2vw,40px); line-height:1.1; margin:0 0 8px}
+.ws-hero-art{position:relative; min-height:260px}
+.ws-hero-art .glow{position:absolute; inset:auto 0 0 0; height:70%; background:radial-gradient(ellipse at 50% 100%, color-mix(in oklab, var(--acc2) 35%, transparent), transparent 65%); filter:blur(18px); opacity:.9}
+.hero-part{position:absolute; width:46%; height:auto; object-fit:contain; filter:drop-shadow(0 12px 28px rgba(0,0,0,.35)); pointer-events:none}
+.hero-part.a{left:0; bottom:18%}
+.hero-part.b{right:0; bottom:8%}
+.hero-part.c{left:26%; top:0}
+.floating{animation: floatY 6s ease-in-out infinite}
+@keyframes floatY{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-8px) } }
+
+.ws-subtitle{margin:8px 0 8px}
+
+.parts-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px}
+.part-card{background:linear-gradient(180deg, var(--card), var(--card2)); border:1px solid var(--line); border-radius:16px; padding:12px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.2); transition:transform .15s ease, box-shadow .15s ease}
+.part-card:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.part-card img{width:100%; height:120px; object-fit:contain; display:block}
+.part-card h4{margin:8px 0 4px}
+.part-card p{margin:0; color:var(--muted)}
+
+.block-diagram{margin-top:8px; border:1px solid var(--line); border-radius:16px; padding:8px; background:linear-gradient(180deg, var(--card), var(--card2)); box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.diagram-svg{width:100%; height:auto; display:block}
+
+.infogrid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin-top:10px}
+.info-item{display:flex; align-items:flex-start; gap:10px; background:linear-gradient(180deg, var(--card), var(--card2)); border:1px solid var(--line); border-radius:14px; padding:12px}
+.info-item h4{margin:0 0 4px}
+.info-item p{margin:0; color:var(--muted)}
+.icon{width:40px; height:40px; flex:0 0 auto}
+.icon .ring{fill:none; stroke:color-mix(in oklab, var(--acc1) 35%, transparent); stroke-width:2}
+.icon .tick{fill:none; stroke:var(--acc2); stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
+
+.ws-cta{margin-top:12px; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.micro{color:var(--muted); font-size:12px}
+
+@media (max-width: 960px){
+  .ws-hero{grid-template-columns:1fr}
+  /* Evitar superposición de imágenes en móvil: convertir en grilla */
+  .ws-hero-art{min-height:auto; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; align-items:end; justify-items:center}
+  .ws-hero-art .glow{display:none}
+  .ws-hero-art .hero-part{position:static; width:90%; max-width:180px; height:auto; animation:none}
+}
+
+/* Evitar solapes en pantallas medianas si el contenedor es muy angosto */
+@media (min-width: 961px) and (max-width: 1160px){
+  .ws-hero-art .hero-part.c{left:auto; right:0; top:4%}
+  .ws-hero-art .hero-part.a{left:0; bottom:auto; top:24%}
+  .ws-hero-art .hero-part.b{right:auto; left:32%; bottom:0}
+}
+
 /* Cards & grids */
 .grid{display:grid; gap:18px}
 .cards{grid-template-columns:repeat(auto-fit, minmax(240px, 1fr))}
@@ -136,8 +181,17 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 .legend{display:flex; gap:16px; flex-wrap:wrap; margin-top:10px}
 .legend .dot{width:10px; height:10px; border-radius:999px; display:inline-block; background:var(--fg); margin-right:6px}
 
-/* Oculta leyendas duplicadas bajo los grficos de almacenamiento */
+/* Oculta leyendas duplicadas bajo los gráficos de almacenamiento */
 #storageLegend, #latencyLegend { display:none; }
+
+/* Listas con checks consistentes (sin emojis) */
+.checklist{ list-style:none; padding-left:0; margin:8px 0 0 0; }
+.checklist li{ position:relative; padding-left:1.6em; margin:6px 0; }
+.checklist li::before{
+  content:"\2714"; /* âœ” */
+  position:absolute; left:0; top:0.1em;
+  color:#22c55e; font-weight:700; font-size:1.1em;
+}
 
 /* Video embebido responsivo y con buen estilo */
 .video-embed{ position:relative; width:100%; max-width:900px; margin:12px auto; border-radius:12px; overflow:hidden; background:#000; aspect-ratio:16/9 }
@@ -204,12 +258,14 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 .site-footer{padding:40px 0 5px 0; border-top:1px solid var(--line); margin-top:40px}
 .site-footer p{color:var(--muted); text-align:center; display:flex; align-items:center; justify-content:center; gap:4px; position:relative}
 /* Trust/Sectigo badge inline con el texto del footer */
-#comodoTL{
+/* Trust/Sectigo anchor: oculto por defecto para evitar "flotante" fuera del footer */
+#comodoTL{ display:none; }
+.site-footer #comodoTL{
   position:absolute; left:0; top:50%; transform:translateY(-50%);
   display:inline-flex; align-items:center; gap:4px;
   text-decoration:none; color:inherit;
 }
-#comodoTL img{ height:18px; width:auto; display:block; }
+.site-footer #comodoTL img{ height:18px; width:auto; display:block; }
 
 /* Footer inline badge (preferred) */
 .footer-badge{ display:inline-flex; align-items:center; gap:4px; margin-left:0; vertical-align:middle; }
