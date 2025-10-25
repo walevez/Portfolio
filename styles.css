@@ -4,6 +4,9 @@
   --acc1:#6ee7f8; --acc2:#a78bfa; --acc3:#22d3ee;
   /* Altura del header. JS la recalcula en runtime */
   --header-h: 64px;
+  --section-gap: 72px;
+  --section-gap-compact: 52px;
+  --section-lead-width: 66ch;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -18,11 +21,53 @@ body{
 /* Container & layout */
 .container{width:min(1100px,92vw); margin:0 auto}
 .section{
-  padding:48px 0;
+  padding:clamp(52px, 6.5vw, var(--section-gap)) 0 clamp(44px, 5vw, var(--section-gap-compact));
   /* Offset mayor para que el ancla quede visible bajo el header y el scrollspy lo detecte */
   scroll-margin-top: calc(var(--header-h) + 36px);
 }
-.subtitle{color:var(--muted); margin-top:-6px}
+.section:not(:first-of-type){
+  margin-top:clamp(28px, 5vw, 56px);
+  padding-top:clamp(64px, 8vw, calc(var(--section-gap) + 16px));
+}
+.subtitle{
+  color:var(--muted);
+  margin:0;
+  line-height:1.55;
+}
+.section > .container > .subtitle{
+  font-size:clamp(16px, 2vw, 18px);
+  margin:clamp(14px, 2vw, 18px) 0 clamp(32px, 4vw, 46px);
+  max-width:var(--section-lead-width);
+}
+.section-title{
+  margin:0;
+  font-size:clamp(28px, 3.5vw, 44px);
+  line-height:1.15;
+  letter-spacing:-0.02em;
+}
+.section-subtitle{
+  margin:clamp(38px, 5vw, 60px) 0 18px;
+  font-size:clamp(18px, 2.3vw, 24px);
+  font-weight:700;
+  letter-spacing:-0.01em;
+  line-height:1.3;
+  position:relative;
+}
+.section-subtitle::after{
+  content:"";
+  display:block;
+  width:52px;
+  height:3px;
+  margin-top:12px;
+  background:linear-gradient(90deg, color-mix(in oklab, var(--acc1) 85%, transparent), var(--acc2));
+  border-radius:999px;
+}
+.ws .subtitle{margin:12px 0 0}
+.ws-subtitle{
+  color:var(--fg);
+  font-weight:600;
+}
+.ws-subtitle:not(.section-subtitle){margin:8px 0 10px}
 
 /* Header fijo y por encima de todo */
 .site-header{
@@ -38,9 +83,71 @@ body{
 
 .nav{display:flex; align-items:center; justify-content:space-between; padding:0 0; position:relative}
 .brand{color:var(--fg); text-decoration:none; font-weight:700}
-.nav-links{display:flex; gap:16px}
-.nav-links a{color:var(--muted); text-decoration:none; font-weight:600}
-.nav-links a:hover{color:var(--fg)}
+.nav-links{display:flex; align-items:center; gap:18px}
+.nav-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+  color:var(--muted);
+  text-decoration:none;
+  background:none;
+  border:0;
+  font:inherit;
+  padding:8px 0;
+  cursor:pointer;
+  transition:color .2s ease;
+}
+.nav-link:hover,
+.nav-link:focus-visible{color:var(--fg); outline:none}
+.nav-item{position:relative}
+.nav-caret{
+  width:0;
+  height:0;
+  border-left:4px solid transparent;
+  border-right:4px solid transparent;
+  border-top:6px solid var(--muted);
+  transition:transform .2s ease, border-color .2s ease;
+}
+.nav-item.open .nav-caret{transform:rotate(180deg); border-top-color:var(--fg)}
+.nav-submenu{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:0;
+  min-width:200px;
+  background:rgba(10,12,18,0.98);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px 0;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(6px);
+  transition:opacity .2s ease, transform .2s ease;
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
+  z-index:999;
+}
+.nav-sub-link{
+  padding:8px 18px;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  white-space:nowrap;
+  transition:color .2s ease, background .2s ease;
+}
+.nav-sub-link:hover{color:var(--fg); background:rgba(255,255,255,.04)}
+.nav-item.open .nav-submenu,
+.nav-item:hover .nav-submenu,
+.nav-item:focus-within .nav-submenu{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0);
+}
 /* Active section highlight */
 /* Desactivar efecto de resaltado activo en menú */
 /* .nav-links a.active { }
@@ -112,7 +219,6 @@ body{
 .floating{animation: floatY 6s ease-in-out infinite}
 @keyframes floatY{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-8px) } }
 
-.ws-subtitle{margin:8px 0 8px}
 
 .parts-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px}
 .part-card{background:linear-gradient(180deg, var(--card), var(--card2)); border:1px solid var(--line); border-radius:16px; padding:12px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,.2); transition:transform .15s ease, box-shadow .15s ease}
@@ -178,6 +284,13 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 
 /* Canvas de gráficos */
 .canvas{width:100%; max-width:900px; border:1px dashed var(--line); border-radius:12px; background:rgba(0,0,0,.15); margin-top:12px}
+.chart-canvas{
+  display:block;
+  max-width:100%;
+  margin-top:12px;
+  height:320px;
+}
+.chart-canvas + .legend{margin-top:14px}
 .legend{display:flex; gap:16px; flex-wrap:wrap; margin-top:10px}
 .legend .dot{width:10px; height:10px; border-radius:999px; display:inline-block; background:var(--fg); margin-right:6px}
 
@@ -323,6 +436,31 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 #corazon-ia .canvas img{width:100%; height:100%; object-fit:contain}
 
 @media (max-width: 640px){
+  #card-ruta-autopista-bottom .table-wrapper{overflow:visible}
+  #card-ruta-autopista-bottom table{min-width:0}
+  #card-ruta-autopista-bottom thead{display:none}
+  #card-ruta-autopista-bottom tbody{display:flex; flex-direction:column; gap:12px}
+  #card-ruta-autopista-bottom tr{
+    display:flex;
+    flex-direction:column;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+  }
+  #card-ruta-autopista-bottom td{
+    display:flex;
+    justify-content:space-between;
+    padding:4px 0;
+    border-bottom:0;
+  }
+  #card-ruta-autopista-bottom td::before{
+    content:attr(data-label);
+    color:var(--muted);
+    font-weight:600;
+    margin-right:12px;
+  }
+  .chart-canvas{height:260px}
   /* Reducir alto visual de espacios de imagen en móviles */
   #corazon-ia .canvas[style*="height:180px"]{height:150px !important}
   #corazon-ia .canvas[style*="height:120px"]{height:100px !important}
@@ -342,8 +480,36 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
     gap:0;
     border-bottom:1px solid var(--line);
   }
-  .nav-links a{padding:14px 16px; border-top:1px solid var(--line)}
+  .nav-links > .nav-link,
+  .nav-links > .nav-item > .nav-link{
+    padding:14px 16px;
+    border-top:1px solid var(--line);
+    width:100%;
+    justify-content:space-between;
+  }
+  .nav-links > .nav-item{width:100%}
+  .nav-links > .nav-link{width:100%}
   .nav-links.open{display:flex}
+  .nav-submenu{
+    position:static;
+    min-width:unset;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    background:transparent;
+    padding:0 0 12px 16px;
+    gap:6px;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:none;
+    display:none;
+  }
+  .nav-item.open .nav-submenu{display:flex}
+  .nav-sub-link{
+    padding:6px 0;
+    white-space:normal;
+  }
 }
 
 .card:hover h3{ color: var(--acc1); transform: translateY(-2px); }
@@ -452,3 +618,4 @@ hr.divider{
             Placa Base: ASRock B550M-HDV
             <li><a class="source-link" href="https://www.asrock.com/mb/AMD/B550M-HDV/index.es.asp" target="_blank" rel="noopener">ASRock: B550M-HDV</a></li>
             <li><a class="source-link" href="https://www.profesionalreview.com/2020/07/26/asrock-b550-pro4-review/" target="_blank" rel="noopener">Profesional Review: ASRock B550 Pro4</a></li>
+

@@ -29,11 +29,23 @@
         <span class="bar"></span>
       </button>
       <nav id="primary-menu" class="nav-links" role="navigation" aria-label="Principal">
-        <a href="#workstation">Workstation</a>
-        <a href="#almacenamiento-ssd">Almacenamiento</a>
-        <a href="#config-ml">Configuración ML</a>
-        <a href="#futuro">Mirando al futuro</a>
-        <a href="#faq">FAQ</a>
+        <div class="nav-item has-submenu">
+          <button class="nav-link nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+            Workstation
+            <span class="nav-caret" aria-hidden="true"></span>
+          </button>
+          <div class="nav-submenu" role="menu" aria-label="Secciones de Workstation">
+            <a href="#workstation" class="nav-sub-link" role="menuitem">Resumen</a>
+            <a href="#ws-componentes" class="nav-sub-link" role="menuitem">Componentes</a>
+            <a href="#ws-diagrama" class="nav-sub-link" role="menuitem">Diagrama</a>
+          </div>
+        </div>
+        <a href="#corazon-ia" class="nav-link">Corazón IA</a>
+        <a href="#almacenamiento-ssd" class="nav-link">Almacenamiento</a>
+        <a href="#comparativa" class="nav-link">Comparativa</a>
+        <a href="#config-ml" class="nav-link">Config ML</a>
+        <a href="#futuro" class="nav-link">Futuro</a>
+        <a href="#faq" class="nav-link">FAQ</a>
       </nav>
     </div>
   </header>
@@ -62,7 +74,7 @@
       </div>
 
       <!-- Galería de componentes -->
-      <h3 id="ws-componentes" class="ws-subtitle">Componentes clave</h3>
+      <h3 id="ws-componentes" class="ws-subtitle section-subtitle">Componentes clave</h3>
       <div class="parts-grid">
         <article class="part-card">
           <img src="images/pcarma/micro.png" alt="CPU"/>
@@ -112,7 +124,7 @@
       </div>
 
       <!-- Diagrama de bloques -->
-      <h3 id="ws-diagrama" class="ws-subtitle">Diagrama de bloques</h3>
+      <h3 id="ws-diagrama" class="ws-subtitle section-subtitle">Diagrama de bloques</h3>
       <div class="block-diagram" role="img" aria-label="Diagrama de conexiones de la workstation">
         <svg viewBox="0 0 880 420" class="diagram-svg" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -216,7 +228,7 @@
       </div>
 
       <!-- Infografía de capacidades -->
-      <h3 class="ws-subtitle">Capacidades en una mirada</h3>
+      <h3 class="ws-subtitle section-subtitle">Capacidades en una mirada</h3>
       <div class="infogrid">
         <div class="info-item">
           <svg viewBox="0 0 48 48" class="icon"><circle cx="24" cy="24" r="22" class="ring"/><path d="M14 26l6 6 14-14" class="tick"/></svg>
@@ -260,13 +272,14 @@
   <!-- Corazón IA (nuevo) -->
   <section id="corazon-ia" class="section">
     <div class="container">
-      <h2>Procesadores (CPU) (Unidad Central de Proceso) — ¿Qué es y para qué sirve? </h2>
+      <h2 class="section-title">Procesadores (CPU) (Unidad Central de Proceso)</h2>
       <p class="subtitle">CPU, NPU e GPU: roles complementarios</p>
 
       <div class="grid cards">
         <article class="card">
           <h3>Introducción</h3>
           <ul>
+            ¿Qué es y para qué sirve? <br><br>
                           Si tuvieramos que usar metaforas para explicar que es un cpu seria pensarla como el director de orquesta del equipo: decide qué se hace, en qué orden y con qué prioridad. <br>
                           Ejecuta el sistema operativo, las apps y la lógica que no es puro cálculo repetitivo.<br>
                           Tiene pocos “músicos” (núcleos) pero muy buenos para responder rápido (baja latencia por hilo).<br>
@@ -289,7 +302,7 @@
           </ul>
         </article>
       </div>
-      <h3 style="margin-top:16px">Procesadores (CPU)</h3>
+      <h3 class="section-subtitle">Procesadores (CPU)</h3>
       <div class="grid cards">
         <article class="card">
           <h4>AMD Ryzen AI 300 Series –Strix Point–</h4>
@@ -329,7 +342,7 @@
         </article>
       </div>
 
-      <h3 style="margin-top:16px">Placa de video (GPU)</h3>
+      <h3 class="section-subtitle">Placa de video (GPU)</h3>
             <div class="grid cards">
         <article class="card">
           <h3>Introducción</h3>
@@ -451,33 +464,20 @@
           </div>
         </article>
       </div>
-      <details class="faq">
-        <summary>Bibliografía</summary>
-        <div>
-          <ul>
-            <li><a class="source-link" href="https://www.amd.com/en/partner/articles/ryzen-ai-300-series-processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">AMD: Ryzen AI 300 Series</a></li>
-            <li><a class="source-link" href="https://www.amd.com/en/partner/articles/ryzen-ai-pro-300-series-processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">AMD: Ryzen AI Pro 300 Series</a></li>
-            <li><a class="source-link" href="https://www.intel.com/content/www/us/en/support/articles/000099574/processors/intel-core-ultra-processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Core Ultra Processors</a></li>
-            <li><a class="source-link" href="https://www.intel.com/content/www/us/en/support/articles/000091896/processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Core Processors</a></li>
-            <li><a class="source-link" href="https://download.intel.com/newsroom/2024/client-computing/Intel-Core-Ultra-Series-2-Media-Deck.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Core Ultra Series 2 Media Deck</a></li>
-            <li><a class="source-link" href="https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf" target="_blank" rel="noopener">NVIDIA: RTX Blackwell GPU Architecture</a></li>
-            <li><a class="source-link" href="https://cdrdv2-public.intel.com/824436/2024_Intel_Tech%20Tour%20TW_Lunar%20Lake%20AI%20Hardware%20Accelerators.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Lunar Lake AI Hardware Accelerators</a></li>
-            <li><a class="source-link" href="https://www.servethehome.com/intel-lunar-lake-for-ai-pcs-at-hot-chips-2024/?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Lunar Lake for AI PCs at Hot Chips 2024</a></li>
-          </ul>
-        </div>
-      </details>
+
     </div>
     <!-- NPU -->
     <section class="container" style="margin-top:32px">
-      <h3>NPU (Unidad de Procesamiento Neuronal) - ¿Que es una NPU y para que sirve?</h3>
+      <h3 class="section-subtitle">NPU (Unidad de Procesamiento Neuronal)</h3>
       <article class="card">
         <p>
+          ¿Que es una NPU y para que sirve?<br><br>
           En este caso vamos a decir que la NPU es como una línea de producción dentro del chip hecha para inferencia (ejecutar modelos ya entrenados). Está compuesta por tiles (bloques repetidos) que hacen multiplicaciones de matrices y tienen 
           SRAM (una “mesada” de datos muy cerca) para no ir todo el tiempo a la memoria principal. Un DMA (montacargas) les trae “lotes” de datos a tiempo. Resultado: baja latencia y muy buen rendimiento por watt, ideal para cosas en tiempo 
           real (subtítulos, efectos de cámara/voz, asistentes). 
         </p>
         </div>
-      <h3 style="margin-top:16px">NPU</h3>
+      <h3 class="section-subtitle">NPU</h3>
       <div class="grid cards">
         <article class="card">
           <h4>Intel Core Ultra (Lunar Lake) — NPU 4 (“AI Boost”)</h4>
@@ -504,15 +504,29 @@
           </ul>
         </article>
       </div>
-
       </article>
+            <details class="faq">
+        <summary>Bibliografía</summary>
+        <div>
+          <ul>
+            <li><a class="source-link" href="https://www.amd.com/en/partner/articles/ryzen-ai-300-series-processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">AMD: Ryzen AI 300 Series</a></li>
+            <li><a class="source-link" href="https://www.amd.com/en/partner/articles/ryzen-ai-pro-300-series-processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">AMD: Ryzen AI Pro 300 Series</a></li>
+            <li><a class="source-link" href="https://www.intel.com/content/www/us/en/support/articles/000099574/processors/intel-core-ultra-processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Core Ultra Processors</a></li>
+            <li><a class="source-link" href="https://www.intel.com/content/www/us/en/support/articles/000091896/processors.html?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Core Processors</a></li>
+            <li><a class="source-link" href="https://download.intel.com/newsroom/2024/client-computing/Intel-Core-Ultra-Series-2-Media-Deck.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Core Ultra Series 2 Media Deck</a></li>
+            <li><a class="source-link" href="https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf" target="_blank" rel="noopener">NVIDIA: RTX Blackwell GPU Architecture</a></li>
+            <li><a class="source-link" href="https://cdrdv2-public.intel.com/824436/2024_Intel_Tech%20Tour%20TW_Lunar%20Lake%20AI%20Hardware%20Accelerators.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Lunar Lake AI Hardware Accelerators</a></li>
+            <li><a class="source-link" href="https://www.servethehome.com/intel-lunar-lake-for-ai-pcs-at-hot-chips-2024/?utm_source=chatgpt.com" target="_blank" rel="noopener">Intel: Lunar Lake for AI PCs at Hot Chips 2024</a></li>
+          </ul>
+        </div>
+      </details>
   </section>
 
 
   <!-- NUEVO: Almacenamiento SATA vs NVMe -->
   <section id="almacenamiento-ssd" class="section">
     <div class="container">
-      <h2>La Batalla de los SSD: SATA vs NVMe</h2>
+      <h2 class="section-title">La Batalla de los SSD: SATA vs NVMe</h2>
       <p class="subtitle">¿Qué son y por qué importa?</p>
 
       <div class="grid cards">
@@ -562,8 +576,8 @@
       <div class="grid">
         <article class="card" id="card-ruta-autopista-bottom">
           <h3>La ruta vs la autopista</h3>
-          <div class="table-wrapper">
-            <table>
+          <div class="table-wrapper" role="region" aria-label="Comparativa SATA vs NVMe" tabindex="0">
+            <table class="table-compare">
               <thead>
                 <tr>
                   <th>Tecnología</th>
@@ -573,14 +587,14 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>SATA</td>
-                  <td>Ruta de 2 carriles</td>
-                  <td>Hasta 550 MB/s</td>
+                  <td data-label="Tecnología">SATA</td>
+                  <td data-label="Comparación">Ruta de 2 carriles</td>
+                  <td data-label="Velocidad aproximada">Hasta 550 MB/s</td>
                 </tr>
                 <tr>
-                  <td>NVMe</td>
-                  <td>Autopista de 8 carriles</td>
-                  <td>Entre 3000 y 7000 MB/s</td>
+                  <td data-label="Tecnología">NVMe</td>
+                  <td data-label="Comparación">Autopista de 8 carriles</td>
+                  <td data-label="Velocidad aproximada">Entre 3000 y 7000 MB/s</td>
                 </tr>
               </tbody>
             </table>
@@ -590,10 +604,10 @@
         <article class="card" id="card-graficos">
           <h3>Gráficos para comparar</h3>
           <p class="kv">Velocidad secuencial (MB/s)</p>
-          <canvas id="storageCanvas" width="900" height="320" class="canvas"></canvas>
+          <canvas id="storageCanvas" class="canvas chart-canvas" data-height="320"></canvas>
           <div class="legend" id="storageLegend"></div>
           <p class="kv" style="margin-top:14px">Latencia (µs, menor es mejor)</p>
-          <canvas id="latencyCanvas" width="900" height="320" class="canvas"></canvas>
+          <canvas id="latencyCanvas" class="canvas chart-canvas" data-height="320"></canvas>
           <div class="legend" id="latencyLegend"></div>
         </article>
       </div>
@@ -761,7 +775,7 @@
   <!-- Comparativa de Equipos -->
   <section id="comparativa" class="section">
     <div class="container">
-      <h2>Comparativa de Equipos IA</h2>
+      <h2 class="section-title">Comparativa de Equipos IA</h2>
       <p class="subtitle">Una bestia para entreno y una opción económica.</p>
 
       <div class="table-wrapper">
@@ -809,7 +823,7 @@
   <!-- Configuración ML -->
   <section id="config-ml" class="section">
     <div class="container">
-      <h2>Configuración de PC para Científico de Datos</h2>
+      <h2 class="section-title">Configuración de PC para Científico de Datos</h2>
       <p class="subtitle">Especialista en Modelos de Lenguaje</p>
 
       <div class="grid cards">
@@ -921,7 +935,7 @@
   <!-- Mirando al futuro -->
   <section id="futuro" class="section">
     <div class="container">
-      <h2>Mirando al futuro</h2>
+      <h2 class="section-title">Mirando al futuro</h2>
       <p class="subtitle">Cúbits semiconductores y la próxima era</p>
 
       <div class="grid cards">
@@ -963,7 +977,7 @@
   <!-- FAQ -->
   <section id="faq" class="section">
     <div class="container">
-      <h2>FAQ</h2>
+      <h2 class="section-title">FAQ</h2>
       <details class="faq">
         <summary>¿GPU o CPU para IA?</summary>
         <p>Entrenar = GPU. Inferencia liviana/ETL = CPU+RAM.</p>
