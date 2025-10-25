@@ -260,19 +260,35 @@
   <!-- Corazón IA (nuevo) -->
   <section id="corazon-ia" class="section">
     <div class="container">
-      <h2>CPU, NPU y GPU: trabajando en equipo</h2>
-      <p class="subtitle">CPU, NPU e iGPU: roles complementarios</p>
+      <h2>Procesadores (CPU) (Unidad Central de Proceso) — ¿Qué es y para qué sirve? </h2>
+      <p class="subtitle">CPU, NPU e GPU: roles complementarios</p>
 
       <div class="grid cards">
         <article class="card">
           <h3>Introducción</h3>
           <ul>
+                          Si tuvieramos que usar metaforas para explicar que es un cpu seria pensarla como el director de orquesta del equipo: decide qué se hace, en qué orden y con qué prioridad. <br>
+                          Ejecuta el sistema operativo, las apps y la lógica que no es puro cálculo repetitivo.<br>
+                          Tiene pocos “músicos” (núcleos) pero muy buenos para responder rápido (baja latencia por hilo).<br>
+                          <br>
+                          ¿En qué brilla?
+                          <ul>
+                            <li>Pre/Post-proceso de IA (tokenizar texto, preparar lotes, comprimir/decodificar).</li>
+                            <li>Tareas interactivas y de control (planificación, I/O, hilos livianos).</li>
+                            <br>
+                          </ul>
+
+                          Latencia baja cuando la tarea no es gigantesca.
+                          En este caso vamos a hacer incapie en los dos de vanguardia.
+                          <br>
+                        </li>
+                        <br>
                         <li><strong>CPU</strong>: el cerebro general. Ejecuta sistema, apps y lógica secuencial. Brilla en baja latencia por hilo y control.</li>
+                        <br>
                         <li><strong>NPU</strong>: una mini‑fábrica para inferencia de IA (matmul y afines) con muy bajo consumo. Ideal para efectos/IA en tiempo real y tareas en segundo plano.</li>
           </ul>
         </article>
       </div>
-
       <h3 style="margin-top:16px">Procesadores (CPU)</h3>
       <div class="grid cards">
         <article class="card">
@@ -314,7 +330,25 @@
       </div>
 
       <h3 style="margin-top:16px">Placa de video (GPU)</h3>
+            <div class="grid cards">
+        <article class="card">
+          <h3>Introducción</h3>
+          <ul>
+            <li>Siguiendo con la metaforas, la cpu podria ser como una megafábrica con miles de operarios haciendo la misma tarea en paralelo.</li>
+            <li>Nació para gráficos, pero es perfecta para IA porque multiplicar matrices se acelera cuando muchos hacen lo mismo a la vez.</li>
+            <li>Tiene VRAM (su depósito gigante y rápido) para sostener lotes y modelos grandes.</li>
+            <li>Algunas traen unidades especiales para IA (p. ej., Tensor Cores) que son como máquinas automáticas de multiplicar matrices.</li>
+          </ul>
+          <p>¿En qué brilla?</p>
+          <ul>
+            <li>Entrenamiento de modelos y inferencia pesada (lotes grandes, alta resolución, modelos grandes).</li>
+            <li>Cosas como Stable Diffusion/FLUX, upscaling de video, y LLMs grandes.</li>
+          </ul>
+
+        </article>
+      </div>
       <div class="grid cards">
+        
         <article class="card">
           <h4>NVIDIA GeForce RTX 5090 (arquitectura Blackwell)</h4>
           <div class="carousel" id="rtx-carousel" aria-label="Carrusel RTX 5090">
@@ -357,6 +391,8 @@
           <p>El SM Blackwell integra Tensor Cores de 5ª gen preparados para neural shaders (FP4/FP8/FP16) con gran rendimiento por vatio en IA.</p>
           <p>Resumen: Tensor Cores para redes, RT Cores para geometría, AMP para coordinar, y GDDR7 ultrarrápida alimentando todo: más calidad + más FPS con IA rápida y fotogramas estables.</p>
         </article>
+
+
       </div>
 
       <!-- Guía rápida: ¿CPU, GPU o NPU? -->
@@ -431,7 +467,48 @@
         </div>
       </details>
     </div>
+    <!-- NPU -->
+    <section class="container" style="margin-top:32px">
+      <h3>NPU (Unidad de Procesamiento Neuronal) - ¿Que es una NPU y para que sirve?</h3>
+      <article class="card">
+        <p>
+          En este caso vamos a decir que la NPU es como una línea de producción dentro del chip hecha para inferencia (ejecutar modelos ya entrenados). Está compuesta por tiles (bloques repetidos) que hacen multiplicaciones de matrices y tienen 
+          SRAM (una “mesada” de datos muy cerca) para no ir todo el tiempo a la memoria principal. Un DMA (montacargas) les trae “lotes” de datos a tiempo. Resultado: baja latencia y muy buen rendimiento por watt, ideal para cosas en tiempo 
+          real (subtítulos, efectos de cámara/voz, asistentes). 
+        </p>
+        </div>
+      <h3 style="margin-top:16px">NPU</h3>
+      <div class="grid cards">
+        <article class="card">
+          <h4>Intel Core Ultra (Lunar Lake) — NPU 4 (“AI Boost”)</h4>
+          <div class="canvas" style="height:180px; display:flex; align-items:center; justify-content:center">
+          <img src="/images/npu4.png" alt="npu4">
+          </div>
+          <ul>
+            <li>Hasta ~48 TOPS (INT8). La 4.ª generación de NPU pasa de 2→6 tiles, sube frecuencia y ancho de vector, dando ~4× el pico respecto a Meteor Lake. Además, el ancho de banda interno sube a ~136 GB/s (≈2×), así se mueven activaciones/pesos sin cuellos.</li>
+            <li>En láminas oficiales, Stable Diffusion v1.5 muestra una mejora clara frente a la generación anterior (demos de referencia).</li>
+            <li>A nivel SoC, suma una System-Level Cache de 8 MB (SLC) compartida por CPU+iGPU+NPU para bajar idas a DRAM y estabilizar latencia/consumo.</li>
+          </ul>
+
+        </article>
+
+        <article class="card">
+          <h4>AMD Ryzen AI 300 (Strix Point) - XDNA 2</h4>
+          <div class="canvas" style="height:180px; display:flex; align-items:center; justify-content:center">
+            <img src="/images/xdna2.png" alt="xdna2">
+          </div>
+          <ul>
+            <li>~50 TOPS (pico) en la NPU (ligeramente por encima de Intel en la ficha). Soporta BF16 (Block-FP16) además de INT8: útil cuando querés calidad/estabilidad mejor que INT8 en modelos generativos.</li>
+            <li>Arquitectura heredada de Xilinx AI Engine: malla de tiles + SRAM local + DMA con dataflow explícito (minimiza accesos a DRAM).</li>
+            <li>Caso real reciente: Stable Diffusion 3 Medium optimizado para XDNA 2 en BF16, pensado para correr 100% local en laptops Ryzen AI (app Amuse 3.1)</li>
+          </ul>
+        </article>
+      </div>
+
+      </article>
   </section>
+
+
   <!-- NUEVO: Almacenamiento SATA vs NVMe -->
   <section id="almacenamiento-ssd" class="section">
     <div class="container">
