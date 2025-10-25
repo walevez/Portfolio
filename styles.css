@@ -281,6 +281,25 @@ body{
 table{width:100%; border-collapse:collapse; min-width:680px}
 th, td{padding:12px 14px; border-bottom:1px solid var(--line); text-align:left}
 th{position:sticky; top:0; background:var(--card2); z-index:1}
+.video-gallery{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  margin:18px 0 32px;
+}
+.video-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.4));
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.video-card h4{margin:0; font-size:18px}
+.video-card p{margin:0; color:var(--muted); line-height:1.45}
+.video-card p strong{color:var(--fg)}
 
 /* Canvas de gráficos */
 .canvas{width:100%; max-width:900px; border:1px dashed var(--line); border-radius:12px; background:rgba(0,0,0,.15); margin-top:12px}
@@ -308,6 +327,7 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 
 /* Video embebido responsivo y con buen estilo */
 .video-embed{ position:relative; width:100%; max-width:900px; margin:12px auto; border-radius:12px; overflow:hidden; background:#000; aspect-ratio:16/9 }
+.storage-video-card .video-embed{max-width:100%; margin:14px 0}
 .video-embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
 
 /* Comparativa en dos columnas dentro de la tarjeta */
@@ -354,6 +374,8 @@ th{position:sticky; top:0; background:var(--card2); z-index:1}
 /* FAQ */
 .faq{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px; margin-bottom:10px}
 .faq summary{cursor:pointer; font-weight:700}
+.nested-faq{margin-top:12px; background:var(--card2)}
+.nested-faq summary{font-size:14px}
 
 /* Footer staff */
 .footer-staff{margin:40px 0 60px 0}

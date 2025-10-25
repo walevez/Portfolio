@@ -42,7 +42,6 @@
         </div>
         <a href="#corazon-ia" class="nav-link">Corazón IA</a>
         <a href="#almacenamiento-ssd" class="nav-link">Almacenamiento</a>
-        <a href="#comparativa" class="nav-link">Comparativa</a>
         <a href="#config-ml" class="nav-link">Config ML</a>
         <a href="#futuro" class="nav-link">Futuro</a>
         <a href="#faq" class="nav-link">FAQ</a>
@@ -505,6 +504,38 @@
         </article>
       </div>
       </article>
+
+      <h3 class="section-subtitle">Galería de aplicaciones</h3>
+      <div class="video-gallery">
+        <article class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/put4MpPb2BQ" title="RTX 5090 vs 3090" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <h4>Crea imágenes grandes, rápido (RTX 5090 vs 3090)</h4>
+          <p>Generación con <strong>Stable Diffusion / Flux / HunyuanVideo</strong> comparando 5090 vs 3090 en resoluciones altas y pipelines reales.</p>
+          <p><strong>¿Por qué acá brilla la GPU?</strong> Porque es una <strong>megafábrica</strong>: miles de núcleos en paralelo + <strong>VRAM grande y rápida</strong> → mueve lotes altos y resoluciones grandes sin atragantarse.</p>
+          <p class="kv">Fuente: <a class="source-link" href="https://www.youtube.com/channel/UCC8cMMvUfSYGndUfK7HgCsg" target="_blank" rel="noopener noreferrer">@Tech Practice</a></p>
+        </article>
+        <article class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/E3pSdql5j7k" title="Windows Studio Effects" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <h4>Efectos y subtítulos en vivo sin agotar la batería</h4>
+          <p><strong>Windows Studio Effects</strong> (desenfoque, encuadre, foco de voz) y <strong>Subtítulos en vivo</strong> en Windows 11.</p>
+          <p><strong>¿Por qué brilla?</strong> NPU = línea de montaje eficiente: baja latencia y poco consumo. Ideal para portátil.</p>
+          <p class="kv">Fuente: <a class="source-link" href="https://www.youtube.com/channel/UCwITymBVzmFaz6IEK3CK2gA" target="_blank" rel="noopener noreferrer">@solvetic.com</a></p>
+        </article>
+        <article class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/XKwlpPZbyK8" title="Ryzen AI 300" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <h4>Ryzen AI 300: NPU XDNA 2 en acción</h4>
+          <p>Explicación y demos de <strong>Ryzen AI 300</strong> y su <strong>NPU XDNA 2</strong> (IA en portátil; efectos, asistentes, etc.). (El video es divulgativo y no incluye el flujo de Amuse).</p>
+          <p><strong>¿Por qué brilla?</strong> XDNA 2 aporta ~50 TOPS y soporte <strong>BF16</strong>, lo que mejora la eficiencia y la calidad/estabilidad en cargas de IA locales.</p>
+          <p class="kv">Fuente: <a class="source-link" href="https://www.youtube.com/channel/UCA_trXksKMd3XoZ469vA0SQ" target="_blank" rel="noopener noreferrer">@Eclypse Computacion</a></p>
+        </article>
+      </div>
+
             <details class="faq">
         <summary>Bibliografía</summary>
         <div>
@@ -612,20 +643,21 @@
         </article>
       </div>
 
-      <details class="faq">
-        <summary>Video comparativo!</summary>
+      <article class="card storage-video-card">
+        <h3>Video comparativo de rendimiento</h3>
+        <p class="kv">Benchmarker64 prueba NVMe vs SATA en escenarios reales.</p>
         <div class="video-embed">
           <iframe
             src="https://www.youtube.com/embed/hE4JV2FYw0U"
-            title="Benchmarker64 – Video"
+            title="Benchmarker64 - Video"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="lazy">
           </iframe>
         </div>
-        <p class="kv">Fuente: <a class="source-link" href="https://www.youtube.com/@benchmarker64" target="_blank" rel="noopener noreferrer">@benchmarker64</a></p>
-      </details>
+        <p class="kv" style="margin-top:10px">Fuente: <a class="source-link" href="https://www.youtube.com/@benchmarker64" target="_blank" rel="noopener noreferrer">@benchmarker64</a></p>
+      </article>
 
       <details class="faq">
         <summary>¿Por qué es clave para IA y datasets grandes?</summary>
@@ -747,13 +779,35 @@
       <details class="faq">
         <summary>Tecnología DirectStorage</summary>
         <div>
-          <p>API de Microsoft que aprovecha SSD NVMe y GPU-driven IO para reducir latencia y carga en CPU, y acelerar descompresión por GPU.</p>
+          <p>API de Microsoft diseñada para que los SSD NVMe alimenten directo a la GPU con mínima intervención de la CPU, reduciendo latencia y acelerando la descompresión.</p>
           <ul>
             <li>Menos carga sobre CPU</li>
             <li>Menos cuellos de botella</li>
             <li>Mejores tiempos de carga</li>
           </ul>
           <p>En IA: datasets gigantes cargan más rápido y se alimenta mejor a la GPU.</p>
+          <details class="faq nested-faq">
+            <summary>Ver explicación completa</summary>
+            <div>
+              <p>Los SSD NVMe y PCIe modernos entregan gigabytes por segundo, mientras que los HDD viejos llegaban a unos pocos MB/s. Los juegos actuales cargan miles de fragmentos diminutos en tiempo real, generando muchas más solicitudes de E/S que los modelos tradicionales de carga por bloques.</p>
+              <p>Las API antiguas no estaban preparadas para tanto paralelismo: desperdician ancho de banda, crean cuellos de botella y no dejan que los NVMe brillen. DirectStorage surge como la API optimizada para gestionar montones de solicitudes simultáneas y darle acceso directo a la GPU.</p>
+              <p><strong>¿Qué cambia?</strong> GPU-driven I/O y descompresión directa desde el SSD:</p>
+              <ul>
+                <li>Menos trabajo en la CPU y menor latencia.</li>
+                <li>Descompresión acelerada por GPU.</li>
+                <li>Carga de archivos grandes sin cuellos.</li>
+              </ul>
+              <p>Aunque nació para gaming, combina perfecto con cargas de IA:</p>
+              <ol>
+                <li><strong>Carga de datasets gigantes:</strong> menos tiempo muerto esperando lotes desde el SSD.</li>
+                <li><strong>Menos uso de CPU:</strong> libera hilos para preprocesos o servicios del pipeline.</li>
+                <li><strong>Descompresión acelerada:</strong> la GPU puede descomprimir datasets comprimidos sin pasar por CPU.</li>
+                <li><strong>Escenas 3D/AR/VR:</strong> texturas, modelos o entornos masivos se benefician igual que un juego.</li>
+              </ol>
+              <p>Por sí sola no revoluciona la IA, pero junto a NVMe rápidos, GPUs modernas y pipelines paralelos permite entrenar más rápido, reducir cuellos al cargar datos e incrementar la eficiencia de inferencia local.</p>
+              <p>Para que su potencial llegue a las herramientas de IA, falta que frameworks como PyTorch o TensorFlow adopten la API, que Windows/Drivers la integren mejor en tareas generales y que los desarrolladores la incluyan en sus flujos de datos.</p>
+            </div>
+          </details>
         </div>
       </details>
 
@@ -904,7 +958,7 @@
       </details>
 
       <details class="faq">
-        <summary>Bibliografía y fuentes</summary>
+        <summary>Bibliografía</summary>
         <div>
           <ul>
             <li><a class="source-link" href="https://www.amd.com/es/partner/articles/unchained-creativity-threadripper-7000-series.html" target="_blank" rel="noopener">AMD: Threadripper 7000 Series</a></li>
@@ -942,7 +996,7 @@
         <article class="card">
           <h3>¿Qué son los cúbits semiconductores?</h3>
           <p>
-            Son bits cuánticos implementados en materiales semiconductores (como silicio) que aprovechan propiedades cuánticas
+            Son bits cuánticos implementados en materiales semiconductores que aprovechan propiedades cuánticas
             para representar 0 y 1 al mismo tiempo. Buscan combinar escalabilidad de la industria del chip con el poder de la
             computación cuántica.
           </p>
@@ -1017,6 +1071,5 @@
       setTimeout(hideLoader, 3000); // Failsafe por si algún script falla
     })();
   </script>
-  <script language="JavaScript" type="text/javascript">TrustLogo(https://micuenta.donweb.com/img/sectigo_positive_sm.png, CL1, none);</script><a href="https://donweb.com/es-ar/certificados-ssl" id="comodoTL" title="Certificados SSL Argentina">Certificados SSL Argentina</a>
 </body>
 </html>
